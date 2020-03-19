@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>黑苹果的折腾历程 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从上个月中开始算起，弄这个黑苹果小一个月了，几乎所有的周末和晚上下班的时间都用在这个上了。不过皇天不负有心人，现在起码能用了，记录一下这个心酸的历程。    流程：1.分区格盘；2.下载镜像制作启动盘；3.安装；4.替换EFI；  折腾前的准备刚刚查看了一下是8月11号下单买的移动硬盘，因为我想装IOS和win10双系统，可能就需要把我当前笔记本的硬盘都格式化了，那硬盘里的小姐姐啊不资料啊啥的就需">
+  <meta name="description" content="从上个月中开始算起，弄这个黑苹果小一个月了，几乎所有的周末和晚上下班的时间都用在这个上了。不过皇天不负有心人，现在起码能用了，记录一下这个心酸的历程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑苹果的折腾历程">
 <meta property="og:url" content="http://yoursite.com/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="从上个月中开始算起，弄这个黑苹果小一个月了，几乎所有的周末和晚上下班的时间都用在这个上了。不过皇天不负有心人，现在起码能用了，记录一下这个心酸的历程。    流程：1.分区格盘；2.下载镜像制作启动盘；3.安装；4.替换EFI；  折腾前的准备刚刚查看了一下是8月11号下单买的移动硬盘，因为我想装IOS和win10双系统，可能就需要把我当前笔记本的硬盘都格式化了，那硬盘里的小姐姐啊不资料啊啥的就需">
+<meta property="og:description" content="从上个月中开始算起，弄这个黑苹果小一个月了，几乎所有的周末和晚上下班的时间都用在这个上了。不过皇天不负有心人，现在起码能用了，记录一下这个心酸的历程。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/%E5%88%86%E5%8C%BA%E7%BB%93%E6%9E%9C.png">
 <meta property="article:published_time" content="2019-09-15T02:31:55.000Z">
-<meta property="article:modified_time" content="2020-03-19T14:50:45.274Z">
+<meta property="article:modified_time" content="2020-03-19T14:57:08.877Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/%E5%88%86%E5%8C%BA%E7%BB%93%E6%9E%9C.png">
@@ -179,6 +179,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>从上个月中开始算起，弄这个黑苹果小一个月了，几乎所有的周末和晚上下班的时间都用在这个上了。不过皇天不负有心人，现在起码能用了，记录一下这个心酸的历程。  </p>
+<a id="more"></a>
 <blockquote>
 <p>流程：1.分区格盘；2.下载镜像制作启动盘；3.安装；4.替换EFI；</p>
 </blockquote>
@@ -196,7 +197,7 @@
 <p>当过去这道坎之后就会看到一个令人兴奋的APPLE logo，黑底白色的，就和mac启动的界面一样，这基本就证明可以安装了，当然期间也遇到了花屏的问题，找到HD6400（显卡型号）对应的id，通过Clover注入显卡的FakeID就好了，如果你找的efi文件足够正确，那么这一步就可以省略了。进入安装界面之后就是macos重做系统的步骤一样，选择语言啊，选择安装的硬盘啊（注意选择之前格式化为gpt的），先抹掉数据，再安装。点击同意，选择刚才抹掉的磁盘，,它会把USB安装盘上的安装文件预复制到要安装的系统分区里,数据复制完后,它会自动重启接下来的操作就与U盘无关了。重启几次后就进入macos的设置界面了。内心的真的开心开心极了！！但是现实又给了我各种打击，首先是不能调分辨率，图标贼大。看着费劲，经过一番检索发现开始显卡没有驱动上的问题，去重新换了个fakeid解决了。后来发现没有声音，就是声音驱动也有问题咯，本想通过声卡的id找到我声卡对应的驱动的。可是试了好多个都不行，最后只能找了个万能声卡驱动给驱动上了。虽然说音质变差了，但是能听不是！  </p>
 <p>最后一个关键的一部就是重新设置引导文件，因为现在只能进入macos，win10的引导被破坏了。之前想的方法是进入pe重新给win10做引导，但不灵。后来发现是因为我用了clover做mac的引导，如果想添加win10的引导必须在clover下，做双系统的引导。后来改了clover的设置，可算吧win10的加上去了。开机完成！</p>
 <p>开心的享受MACOS吧~首先当然要下载Final Cut Pro了，发现要1999元？？？？打扰了，，，，  </p>
-<p>目前还有最后一个问题就是USB驱动不灵，插不了U盘，但是鼠标和键盘却好使，<del>蛋疼</del>…..</p>
+<p>目前还有最后一个问题就是USB驱动不灵，插不了U盘，但是鼠标和键盘却好使，<del>妈的蛋疼</del>…..</p>
 
       
 
