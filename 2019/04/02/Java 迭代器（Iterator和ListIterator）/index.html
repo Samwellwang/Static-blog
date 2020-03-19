@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/ListIterator%E6%8F%8F%E8%BF%B0.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/ListIterator%E5%8C%85%E5%90%AB%E6%96%B9%E6%B3%95.png">
 <meta property="article:published_time" content="2019-04-02T02:31:55.000Z">
-<meta property="article:modified_time" content="2020-03-17T16:41:03.734Z">
+<meta property="article:modified_time" content="2020-03-17T16:42:24.222Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/IteratorAPI%E6%8E%A5%E5%8F%A3.png">
@@ -183,8 +183,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天查资料的时候看到一个迭代器的东西，不晓得干嘛的。进而学习一下</p>
-<a id="more"></a>
-<h4 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h4><p>Iterator的定义如下：<br>publicinterface Iterator {}<br>Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。Iterator提供的API接口如下： </p>
+<a id="more"></a> 
+
+<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><p>Iterator的定义如下：<br>publicinterface Iterator {}<br>Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。Iterator提供的API接口如下： </p>
 <p><img src="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/IteratorAPI%E6%8E%A5%E5%8F%A3.png" alt="IteratorAPI接口"></p>
 <p>forEachRemaining(Consumer action)：为每个剩余元素执行给定的操作,直到所有的元素都已经被处理或行动将抛出一个异常<br>hasNext()：如果迭代器中还有元素，则返回true。<br>next()：返回迭代器中的下一个元素<br>remove()：删除迭代器新返回的元素。 </p>
 <p><img src="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/Iterator%E6%96%B9%E6%B3%95%E4%B8%BE%E4%BE%8B.png" alt="Iterator方法举例"> </p>
@@ -208,7 +209,7 @@ if (&quot;bbb&quot;.equals(t)) {
     }
 }</code></pre><p>我们可以看到：首先往一个ArrayList里装了aaa，bbb，ccc，然后进行判断删除bbb，最后ArrayList里只剩 aaa，ccc。<br>我们来验证一下：<br><img src="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/%E4%BE%8B1%E9%AA%8C%E8%AF%81.png" alt="例1验证">  </p>
 <p>注意：<br>（1）Iterator只能单向移动。<br>（2）Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次next()方法，remove()方法只能被调用一次，如果违反这个规则将抛出一个异常。 </p>
-<h4 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h4><p>ListIterator是一个功能更加强大的, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator。<br>我们先来看一段关于ListIterator的描述：<br><img src="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/ListIterator%E6%8F%8F%E8%BF%B0.png" alt="ListIterator描述"><br>ListIterator接口定义如下： </p>
+<h3 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h3><p>ListIterator是一个功能更加强大的, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator。<br>我们先来看一段关于ListIterator的描述：<br><img src="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/ListIterator%E6%8F%8F%E8%BF%B0.png" alt="ListIterator描述"><br>ListIterator接口定义如下： </p>
 <p> <code>Interface ListIterator{}</code> </p>
 <p>包含的方法有：</p>
 <p><img src="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/ListIterator%E5%8C%85%E5%90%AB%E6%96%B9%E6%B3%95.png" alt="ListIterator包含方法"><br>由以上定义我们可以推出ListIterator可以:<br>(1)双向移动（向前/向后遍历）.<br>(2)产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引.<br>(3)可以使用set()方法替换它访问过的最后一个元素.<br>(4)可以使用add()方法在next()方法返回的元素之前或previous()方法返回的元素之后插入一个元素.<br>使用例子： </p>
@@ -243,7 +244,7 @@ publicstaticvoidmain(String[] args){
     }
 }
 </code></pre><p>解释：<br>第1行：新建一个ArrayList，命名为a；<br>第2行、第3行和第4行分别一次往ArrayList里添加了aaa,bbb,ccc；<br>第5行：输出ArrayList里的值：aaa,bbb,ccc<br>第6行：调用了a的listIterator方法，并使ListIterator类型的it指向，也就是说ListIterator类型的it指向了ArrayList容器， 通过调用ArrayList的listIterator方法来进行容器内的遍历。<br>第7行、8、9行，调用it的hasNext()方法进行判断容器中是否还有元素，如果有，则输出元素，当前元素前一个元素的索引，当前元素后一个元素的索引，<br>所以会输出：<br>aaa，0，1<br>bbb，1，2<br>ccc，2，3<br>第10行，此时，it已经指向了ArrayList的最后一个元素，在这里调用了ListIterator的hasPrevious()方法，就是，开始往前遍历(上面是往后遍历) 在这个while循环中，会以此输出:ccc bbb  aaa。<br>第13行：输出换行。<br>第14行：现在it应该已经再一次指向ArrayList的开头。在这一行中，it又被用到了，同样的用到了ArrayList的listIteror方法，这一次不同，而是it指向了listIteror的第二个元素，因为是1，第一个元素的索引是0，也就是说it指向了ArrayList里的bbb。bbb是开头的元素。<br>第15行：再一次是调用了ListIterator的hasnext()方法，来判断ArrayList里是否还有元素。<br>第16行:调用了it的next()方法，所谓next方法，是指找到剩下元素的第一个元素，也就是bbb，并把它赋值了String 的 t；<br>第17行：输出bbb<br>第18行：19、20，21行，如果bbb与ccc相等则将bbb set成nnn，否则，add（）来添加kkk，那么在哪里添加呢，是在next方法返回的元素之前，next方法返回的元素是ccc，也就是在bbb，和ccc之间添加kkk。现在容器中有aaa、bbb、kkk以及ccc。返回到第15行，再次以此往下执行，会进行if判断，然后把ccc设置nnn。<br>第24行，最后输出ArrayList里的元素：aaa、bbb、kkk、nnn。</p>
-<h4 id="Iterator和ListIterator区别"><a href="#Iterator和ListIterator区别" class="headerlink" title="Iterator和ListIterator区别"></a>Iterator和ListIterator区别</h4><p>我们在使用List，Set的时候，为了实现对其数据的遍历，我们经常使用到了Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List和Set都有iterator()来取得其迭代器。对List来说，你也可以通过listIterator()取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator和ListIterator主要区别在以下方面：<br>（1）ListIterator有add()方法，可以向List中添加对象，而Iterator不能<br>（2）ListIterator和Iterator都有hasNext()和next()方法，可以实现顺序向后遍历，但是ListIterator有hasPrevious()和previous()方法，可以实现逆向（顺序向前）遍历。Iterator就不可以。<br>（3）ListIterator可以定位当前的索引位置，nextIndex()和previousIndex()可以实现。Iterator没有此功能。<br>（4）都可实现删除对象，但是ListIterator可以实现对象的修改，set()方法可以实现。Iierator仅能遍历，不能修改。<br>因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。其实，数组对象也可以用迭代器来实现。</p>
+<h3 id="Iterator和ListIterator区别"><a href="#Iterator和ListIterator区别" class="headerlink" title="Iterator和ListIterator区别"></a>Iterator和ListIterator区别</h3><p>我们在使用List，Set的时候，为了实现对其数据的遍历，我们经常使用到了Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List和Set都有iterator()来取得其迭代器。对List来说，你也可以通过listIterator()取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator和ListIterator主要区别在以下方面：<br>（1）ListIterator有add()方法，可以向List中添加对象，而Iterator不能<br>（2）ListIterator和Iterator都有hasNext()和next()方法，可以实现顺序向后遍历，但是ListIterator有hasPrevious()和previous()方法，可以实现逆向（顺序向前）遍历。Iterator就不可以。<br>（3）ListIterator可以定位当前的索引位置，nextIndex()和previousIndex()可以实现。Iterator没有此功能。<br>（4）都可实现删除对象，但是ListIterator可以实现对象的修改，set()方法可以实现。Iierator仅能遍历，不能修改。<br>因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。其实，数组对象也可以用迭代器来实现。</p>
 
       
 
@@ -347,11 +348,11 @@ publicstaticvoidmain(String[] args){
   
 <nav id="article-nav">
   
-    <a href="/2019/10/01/MySQL_Index/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MySQL 索引的学习
+          黑苹果的折腾历程
         
       </div>
     </a>
@@ -385,7 +386,7 @@ publicstaticvoidmain(String[] args){
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Iterator"><span class="toc-number">1.</span> <span class="toc-text">Iterator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ListIterator"><span class="toc-number">2.</span> <span class="toc-text">ListIterator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Iterator和ListIterator区别"><span class="toc-number">3.</span> <span class="toc-text">Iterator和ListIterator区别</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator"><span class="toc-number">1.</span> <span class="toc-text">Iterator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ListIterator"><span class="toc-number">2.</span> <span class="toc-text">ListIterator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator和ListIterator区别"><span class="toc-number">3.</span> <span class="toc-text">Iterator和ListIterator区别</span></a></li></ol>
                     </div>
                 </span>
             </div>
