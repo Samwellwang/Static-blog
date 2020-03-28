@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>写markdown文章常用的格式 | Hello</title>
+  <title>Java学习笔记 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Markdown note一级标题二级标题">
+  <meta name="description" content="这篇文章记录了学java以来的的全部笔记并不断进行更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写markdown文章常用的格式">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/MarkdownNote/index.html">
+<meta property="og:title" content="Java学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="Markdown note一级标题二级标题">
+<meta property="og:description" content="这篇文章记录了学java以来的的全部笔记并不断进行更新">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024">
-<meta property="og:image" content="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024">
-<meta property="article:published_time" content="2019-02-21T02:32:41.000Z">
-<meta property="article:modified_time" content="2020-03-13T17:49:34.052Z">
+<meta property="article:published_time" content="2019-02-11T07:27:51.000Z">
+<meta property="article:modified_time" content="2020-03-28T05:26:35.837Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024">
   
   
     <link rel="icon" href="/img/W.ico">
@@ -159,83 +156,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MarkdownNote" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      写markdown文章常用的格式
+      Java学习笔记
     </h1>
   
 
         
-        <a href="/2019/02/21/MarkdownNote/" class="archive-article-date">
-  	<time datetime="2019-02-21T02:32:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
+        <a href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2019-02-11T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Markdown-note"><a href="#Markdown-note" class="headerlink" title="Markdown note"></a>Markdown note</h1><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><a id="more"></a>  
-<p><em>斜体</em><br><strong>加粗</strong><br>分割线</p>
-<hr>
-<p><del>删除线</del><br><u>下划线</u><br>这是[^脚注]<br>[^脚注]: <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>  </p>
-<ol>
-<li>One</li>
-</ol>
-<ul>
-<li>Two</li>
-<li>Three<br>OR  </li>
-</ul>
-<ol>
-<li>ONE<ul>
-<li>ONEONE</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>TWO </li>
-</ul>
-<ul>
-<li>THREE</li>
-</ul>
+        <p>这篇文章记录了学java以来的的全部笔记并不断进行更新</p>
+<a id="more"></a>
+<h4 id="方法的重载和重写Overload和Override"><a href="#方法的重载和重写Overload和Override" class="headerlink" title="方法的重载和重写Overload和Override"></a>方法的重载和重写Overload和Override</h4><p>方法的重载Overload：一个类中，多个方法的方法名相同，但是参数列表不同（可以是个数不同，类型不同，顺序不同）。让类以统一的方式处理不同的数据类型的实现方法，调用方法时传递不同个数或者类型的参数来决定调用哪一个方法。也就是Java的多态性。注意，方法名字相同，参数列表不同，返回类型等其他的可以相同也可以不同，Java虚拟机通过参数列表进行判断。所以需要一个独一无二的参数列表。<br>方法的重写Override：在子类中重写父类存在的方法，对父类的方法进行扩展，新增加功能，重写是建立在继承的关系之上的。重写的方法的方法签名需要与父类对应的方法签名完全一致，（方法签名指的是方法名称和参数列表）</p>
 <blockquote>
-<p>1.区块引用</p>
+<p>重写时可以修改访问权限修饰符，要求：子类重写方法的权限修饰符应大于或者等于父类方法的权限修饰符，比如父类的是protect，你重写完可以改为public，或者父类是default权限，你也可以改为public权限或者protect权限，访问权限只能大，不能小。  </p>
+</blockquote>
 <blockquote>
-<p>1.1 区块引用</p>
-<blockquote>
-<p>1.1.1 区块引用</p>
+<p>重写时可以修改为不同的返回值类型，要求：仅当返回值为引用数据类型时(返回值类型是引用数据类型,而不能是int等基本数据类型)，这样才可以修改返回值类型，且必须是-父类方法返回值类型的子类；要么就不修改，与父类返回值类型相同，比如父类的返回值类型是Object，这时候，你子类的返回值类型可以为Object，也可以任意一个类。只能小，不能大。  </p>
 </blockquote>
-</blockquote>
-</blockquote>
-<p><code>printf()</code> 函数 – 这是代码  </p>
-<p>代码区块   </p>
-<pre><code>hello（）{
-    return hello;
-} </code></pre><p>这是一个链接 <a href="https://www.Google.com" target="_blank" rel="noopener">Google</a><br>or<br><a href="https://www.google.com" target="_blank" rel="noopener">https://www.google.com</a>  </p>
-<p><img src="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024" alt="图标"></p>
-<img src="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024" width="20%">  
-
-<table>
+<h4 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h4><table>
 <thead>
 <tr>
-<th align="left">表头</th>
-<th align="right">表头</th>
+<th>访问修饰符</th>
+<th>本类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
+<td>private</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
 </tr>
 <tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
+<td>default</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>#### 参数绑定</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>调用方把参数传递给实例方法时，调用时传递的值会按参数位置一一绑定。</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        int n &#x3D; 15; &#x2F;&#x2F; n的值为15</span><br><span class="line">        p.setAge(n); &#x2F;&#x2F; 传入n的值</span><br><span class="line">        System.out.println(p.getAge()); &#x2F;&#x2F; 15</span><br><span class="line">        n &#x3D; 20; &#x2F;&#x2F; n的值改为20</span><br><span class="line">        System.out.println(p.getAge()); &#x2F;&#x2F; 15还是20?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">运行代码，从结果可知，修改外部的局部变量n，不影响实例p的age字段，原因是setAge()方法获得的参数，复制了n的值，因此，p.age和局部变量n互不影响。</span><br><span class="line"></span><br><span class="line">结论：基本类型参数的传递，是调用方值的复制。双方各自的后续修改，互不影响。  </span><br><span class="line">我们再看一个传递引用参数的例子：</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>public class Main {</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>public static void main(String[] args) {</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Person p = new Person();</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>String[] fullname = new String[] { “Homer”, “Simpson” };</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>p.setName(fullname); // 传入数组fullname</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>System.out.println(p.getName()); // “Homer Simpson”</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fullname[0] = “Bart”; // fullname数组的第一个元素修改为”Bart”</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>System.out.println(p.getName()); // “Homer Simpson”还是”Bart Simpson”?</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>}</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>}</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
-<p>HTML 技巧<br>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
+<p>class Person {<br>    private String[] name;</p>
+<pre><code>public String getName() {
+    return this.name[0] + &quot; &quot; + this.name[1];
+}
+
+public void setName(String[] name) {
+    this.name = name;
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">注意到setName()的参数现在是一个数组。一开始，把fullname数组传进去，然后，修改fullname数组的内容，结果发现，实例p的字段p.name也被修改了！</span><br><span class="line"></span><br><span class="line">结论：引用类型参数的传递，调用方的变量，和接收方的参数变量，指向的是同一个对象。双方任意一方对这个对象的修改，都会影响对方（因为指向同一个对象嘛）。 </span><br><span class="line">下面这个例子：  </span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        String bob &#x3D; &quot;Bob&quot;;</span><br><span class="line">        p.setName(bob); &#x2F;&#x2F; 传入bob变量</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Bob&quot;</span><br><span class="line">        bob &#x3D; &quot;Alice&quot;; &#x2F;&#x2F; bob改名为Alice</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Bob&quot;还是&quot;Alice&quot;?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结论没问题：</p>
+<p>1、整数、浮点数、字符是基本类型。<br>2、字符串、数组是引用类型（内存数据的索引）</p>
+<p>3、基本类型参数的传递，是调用方值的复制。双方各自的后续修改，互不影响。<br>4、引用类型参数的传递，调用方的变量和接收方的参数变量，指向的是同一个对象。双方任意一方对这个对象的修改，都会影响对方。</p>
+<p>那么3个例子中，<br>1、整数的参数传递理解了，复制出来的，分家了，自己管理自己的，类读出数据不变。<br>2、字符串数组的参数传递也理解了，都是指向同一个地方，数组的一个元素改了，类读出数据也就变了（类一直指向这里）。<br>3、字符串也是引用参数，为什么类读出数据不变？因为重写了整个字符串（新开内存和指向，参看字符串更改章节），类依然指向之前内存块，类读出数据不变，同结论1。如果只是修改字符串内存中某一个字符的值，则同结论2。</p>
+<p>简单总结：类对基本类型是复制数据本身，新开内存。对引用类型是复制指向地址，内存数据本身变化了，类读出数据跟着变化。但字符串修改，是新开内存新指向，已经不能影响类数据。<br>(以上例子和总结来自于<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1260452774408320" target="_blank" rel="noopener">廖雪峰老师博客以及评论</a> </p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><pre><code>Person p = new Person(&quot;Xiao Ming&quot;, 15);    </code></pre><p>new后面的person 指的是构造方法，调用构造方法必须使用new操作符。<br>在Java中，创建对象实例的时候，按照如下顺序进行初始化：</p>
+<ul>
+<li><p>先初始化字段，例如，int age =10;表示字段初始化为10，double salary;表示字段默认初始化为0，String name;表示引用类型字段默认初始化为null；</p>
+</li>
+<li><p>执行构造方法的代码进行初始化。</p>
+</li>
+</ul>
+<p>构造方法的代码由于后运行。<br>构造方法也有多态性，可以自动根据参数列表匹配；<br>构造方法可以调用构造方法，使用<strong>this.</strong>关键字</p>
 
       
 
@@ -325,7 +426,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/21/MarkdownNote/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,18 +440,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/02/21/MarkdownNote/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java 迭代器（Iterator和ListIterator）
+          写markdown文章常用的格式
         
       </div>
     </a>
   
   
-    <a href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java学习笔记</div>
+    <a href="/2019/01/08/OpenCV/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OpenCV</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -377,7 +478,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown-note"><span class="toc-number">1.</span> <span class="toc-text">Markdown note</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一级标题"><span class="toc-number">2.</span> <span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二级标题"><span class="toc-number">2.1.</span> <span class="toc-text">二级标题</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法的重载和重写Overload和Override"><span class="toc-number">1.</span> <span class="toc-text">方法的重载和重写Overload和Override</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问修饰符"><span class="toc-number">2.</span> <span class="toc-text">访问修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造方法"><span class="toc-number">3.</span> <span class="toc-text">构造方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
