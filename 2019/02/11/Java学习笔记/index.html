@@ -16,7 +16,7 @@
 <meta property="og:description" content="这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-02-11T07:27:51.000Z">
-<meta property="article:modified_time" content="2020-03-30T08:27:15.185Z">
+<meta property="article:modified_time" content="2020-03-30T14:41:07.513Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -174,7 +174,10 @@
       
         <p>这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~</p>
 <a id="more"></a>
-<h4 id="方法的重载和重写Overload和Override"><a href="#方法的重载和重写Overload和Override" class="headerlink" title="方法的重载和重写Overload和Override"></a>方法的重载和重写Overload和Override</h4><p>方法的重载Overload：一个类中，多个方法的方法名相同，但是参数列表不同（可以是个数不同，类型不同，顺序不同）。让类以统一的方式处理不同的数据类型的实现方法，调用方法时传递不同个数或者类型的参数来决定调用哪一个方法。也就是Java的多态性。注意，方法名字相同，参数列表不同，返回类型等其他的可以相同也可以不同，Java虚拟机通过参数列表进行判断。所以需要一个独一无二的参数列表。<br>方法的重写Override：在子类中重写父类存在的方法，对父类的方法进行扩展，新增加功能，重写是建立在继承的关系之上的。重写的方法的方法签名需要与父类对应的方法签名完全一致，（方法签名指的是方法名称和参数列表）</p>
+<h4 id="方法的重载和重写Overload和Override"><a href="#方法的重载和重写Overload和Override" class="headerlink" title="方法的重载和重写Overload和Override"></a>方法的重载和重写Overload和Override</h4><p>方法的重载Overload：一个类中，多个方法的方法名相同，但是参数列表不同（可以是个数不同，类型不同，顺序不同）。让类以统一的方式处理不同的数据类型的实现方法，调用方法时传递不同个数或者类型的参数来决定调用哪一个方法。注意，方法名字相同，参数列表不同，返回类型等其他的可以相同也可以不同，Java虚拟机通过参数列表进行判断。所以需要一个独一无二的参数列表。<br>方法的重写Override：在子类中重写父类存在的方法，对父类的方法进行扩展，新增加功能，重写是建立在继承的关系之上的。重写的方法的方法签名需要与父类对应的方法签名完全一致（方法签名指的是方法名称和参数列表）。Override体现了java 的多态性。</p>
+<blockquote>
+<p>多态是同一个行为具有多个不同表现形式或形态的能力。<br>多态性是对象多种表现形式的体现。<br>现实中，比如我们按下 F1 键这个动作：<br>如果当前在 Flash 界面下弹出的就是 AS 3 的帮助文档；<br>如果当前在 Word 下弹出的就是 Word 帮助；<br>在 Windows 下弹出的就是 Windows 帮助和支持。同一个事件发生在不同的对象上会产生不同的结果。多态存在的三个必要条件：1.继承 2.重写 3.父类引用指向子类对象。针对某个类型的方法调用，其真正执行的方法取决于运行时期实际类型的方法。</p>
+</blockquote>
 <blockquote>
 <p>重写时可以修改访问权限修饰符，要求：子类重写方法的权限修饰符应大于或者等于父类方法的权限修饰符，比如父类的是protect，你重写完可以改为public，或者父类是default权限，你也可以改为public权限或者protect权限，访问权限只能大，不能小。  </p>
 </blockquote>
