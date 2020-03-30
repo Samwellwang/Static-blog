@@ -16,7 +16,7 @@
 <meta property="og:description" content="这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-02-11T07:27:51.000Z">
-<meta property="article:modified_time" content="2020-03-28T05:52:51.653Z">
+<meta property="article:modified_time" content="2020-03-30T08:27:15.185Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -223,107 +223,15 @@
 <td>√</td>
 <td>√</td>
 </tr>
-<tr>
-<td>#### 参数绑定</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>调用方把参数传递给实例方法时，调用时传递的值会按参数位置一一绑定。</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        int n &#x3D; 15; &#x2F;&#x2F; n的值为15</span><br><span class="line">        p.setAge(n); &#x2F;&#x2F; 传入n的值</span><br><span class="line">        System.out.println(p.getAge()); &#x2F;&#x2F; 15</span><br><span class="line">        n &#x3D; 20; &#x2F;&#x2F; n的值改为20</span><br><span class="line">        System.out.println(p.getAge()); &#x2F;&#x2F; 15还是20?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">运行代码，从结果可知，修改外部的局部变量n，不影响实例p的age字段，原因是setAge()方法获得的参数，复制了n的值，因此，p.age和局部变量n互不影响。</span><br><span class="line"></span><br><span class="line">结论：基本类型参数的传递，是调用方值的复制。双方各自的后续修改，互不影响。  </span><br><span class="line">我们再看一个传递引用参数的例子：</span><br></pre></td></tr></table></figure></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>public class Main {</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>public static void main(String[] args) {</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Person p = new Person();</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>String[] fullname = new String[] { “Homer”, “Simpson” };</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>p.setName(fullname); // 传入数组fullname</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>System.out.println(p.getName()); // “Homer Simpson”</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fullname[0] = “Bart”; // fullname数组的第一个元素修改为”Bart”</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>System.out.println(p.getName()); // “Homer Simpson”还是”Bart Simpson”?</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>}</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>}</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
-<p>class Person {<br>    private String[] name;</p>
-<pre><code>public String getName() {
-    return this.name[0] + &quot; &quot; + this.name[1];
-}
-
-public void setName(String[] name) {
-    this.name = name;
-}</code></pre><p>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">注意到setName()的参数现在是一个数组。一开始，把fullname数组传进去，然后，修改fullname数组的内容，结果发现，实例p的字段p.name也被修改了！</span><br><span class="line"></span><br><span class="line">结论：引用类型参数的传递，调用方的变量，和接收方的参数变量，指向的是同一个对象。双方任意一方对这个对象的修改，都会影响对方（因为指向同一个对象嘛）。 </span><br><span class="line">下面这个例子：  </span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        String bob &#x3D; &quot;Bob&quot;;</span><br><span class="line">        p.setName(bob); &#x2F;&#x2F; 传入bob变量</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Bob&quot;</span><br><span class="line">        bob &#x3D; &quot;Alice&quot;; &#x2F;&#x2F; bob改名为Alice</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Bob&quot;还是&quot;Alice&quot;?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参数绑定"><a href="#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h4><p>调用方把参数传递给实例方法时，调用时传递的值会按参数位置一一绑定。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        int n &#x3D; 15; &#x2F;&#x2F; n的值为15</span><br><span class="line">        p.setAge(n); &#x2F;&#x2F; 传入n的值</span><br><span class="line">        System.out.println(p.getAge()); &#x2F;&#x2F; 15</span><br><span class="line">        n &#x3D; 20; &#x2F;&#x2F; n的值改为20</span><br><span class="line">        System.out.println(p.getAge()); &#x2F;&#x2F; 15还是20?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行代码，从结果可知，修改外部的局部变量n，不影响实例p的age字段，原因是setAge()方法获得的参数，复制了n的值，因此，p.age和局部变量n互不影响。</p>
+<p>结论：基本类型参数的传递，是调用方值的复制。双方各自的后续修改，互不影响。<br>我们再看一个传递引用参数的例子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        String[] fullname &#x3D; new String[] &#123; &quot;Homer&quot;, &quot;Simpson&quot; &#125;;</span><br><span class="line">        p.setName(fullname); &#x2F;&#x2F; 传入数组fullname</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Homer Simpson&quot;</span><br><span class="line">        fullname[0] &#x3D; &quot;Bart&quot;; &#x2F;&#x2F; fullname数组的第一个元素修改为&quot;Bart&quot;</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Homer Simpson&quot;还是&quot;Bart Simpson&quot;?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private String[] name;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return this.name[0] + &quot; &quot; + this.name[1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String[] name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意到setName()的参数现在是一个数组。一开始，把fullname数组传进去，然后，修改fullname数组的内容，结果发现，实例p的字段p.name也被修改了！</p>
+<p>结论：引用类型参数的传递，调用方的变量，和接收方的参数变量，指向的是同一个对象。双方任意一方对这个对象的修改，都会影响对方（因为指向同一个对象嘛）。<br>下面这个例子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p &#x3D; new Person();</span><br><span class="line">        String bob &#x3D; &quot;Bob&quot;;</span><br><span class="line">        p.setName(bob); &#x2F;&#x2F; 传入bob变量</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Bob&quot;</span><br><span class="line">        bob &#x3D; &quot;Alice&quot;; &#x2F;&#x2F; bob改名为Alice</span><br><span class="line">        System.out.println(p.getName()); &#x2F;&#x2F; &quot;Bob&quot;还是&quot;Alice&quot;?</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结论没问题：</p>
 <p>1、整数、浮点数、字符是基本类型。<br>2、字符串、数组是引用类型（内存数据的索引）</p>
 <p>3、基本类型参数的传递，是调用方值的复制。双方各自的后续修改，互不影响。<br>4、引用类型参数的传递，调用方的变量和接收方的参数变量，指向的是同一个对象。双方任意一方对这个对象的修改，都会影响对方。</p>
@@ -478,7 +386,7 @@ public void setName(String[] name) {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法的重载和重写Overload和Override"><span class="toc-number">1.</span> <span class="toc-text">方法的重载和重写Overload和Override</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问修饰符"><span class="toc-number">2.</span> <span class="toc-text">访问修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造方法"><span class="toc-number">3.</span> <span class="toc-text">构造方法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法的重载和重写Overload和Override"><span class="toc-number">1.</span> <span class="toc-text">方法的重载和重写Overload和Override</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问修饰符"><span class="toc-number">2.</span> <span class="toc-text">访问修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数绑定"><span class="toc-number">3.</span> <span class="toc-text">参数绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造方法"><span class="toc-number">4.</span> <span class="toc-text">构造方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
