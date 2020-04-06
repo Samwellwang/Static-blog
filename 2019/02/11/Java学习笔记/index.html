@@ -16,7 +16,7 @@
 <meta property="og:description" content="这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-02-11T07:27:51.000Z">
-<meta property="article:modified_time" content="2020-04-04T02:33:23.593Z">
+<meta property="article:modified_time" content="2020-04-04T02:42:18.381Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -244,14 +244,14 @@
 </li>
 </ul>
 <p>构造方法的代码由于后运行。<br>构造方法也有多态性，可以自动根据参数列表匹配；<br>构造方法可以调用构造方法，使用<strong>this.</strong>关键字</p>
-<h4 id="native关键字"><a href="#native关键字" class="headerlink" title="native关键字"></a>native关键字</h4><p>刚在看一问题：两个对象的 hashCode()相同，则 equals()也一定为 true么？ 查一下hashCode()的定义， </p>
-<p>   <code>public native int hashCode();</code><br>第一次看到 <strong>native</strong>关键字，好奇是什么东东。查了一番资料。</p>
+<h4 id="native关键字"><a href="#native关键字" class="headerlink" title="native关键字"></a>native关键字</h4><p>刚在看一问题：两个对象的 hashCode()相同，则 equals()也一定为 true么？ 查一下hashCode()的定义，<br>   <code>public native int hashCode();</code><br>第一次看到 <strong>native</strong>关键字，好奇是什么东东。查了一番资料。</p>
 <h5 id="JNI"><a href="#JNI" class="headerlink" title="JNI"></a>JNI</h5><p>首先要了解的是JNI 即 Java Native Interface  Java本地方法接口，通过这个允许Java语言和C或C++进行交互。维基百科是这样解释的：“当应用无法完全用Java编程语言实现的时候，（例如，标准Java类库不支持的特定平台特性或者程序库时），JNI使得编程者能够编写native方法来处理这种情况”。这就意味着，在一个Java应用程序中，我们可以使用我们需要的C++类库，并且直接与Java代码交互，而且在可以被调用的C++程序内，反过来调用Java方法（回调函数）。 （这也太牛逼了吧…<br>总结来说就是：使用native关键字修饰的函数(方法)，说明这个方法是原生函数，也就是这个方法是用C/C++语言实现的，并且被编译成了DLL，由java去调用。 完活儿~<br>补充一个实现步骤  ：<br>可以将native方法比作Java程序同Ｃ程序的接口，其实现步骤：  </p>
 <ul>
 <li>在Java中声明native()方法，然后编译；</li>
-<li>用javah产生一个.h文件；<br>*写一个.cpp文件实现native导出方法，其中需要包含第二步产生的.h文件（注意其中又包含了JDK带的jni.h文件）；</li>
+<li>用javah产生一个.h文件；</li>
+<li>写一个.cpp文件实现native导出方法，其中需要包含第二步产生的.h文件（注意其中又包含了JDK带的jni.h文件）；</li>
 <li>将第三步的.cpp文件编译成动态链接库文件；</li>
-<li>在Java中用System.loadLibrary()方法加载第四步产生的动态链接库文件，这个native()方法就可以在Java中被访问了。  </li>
+<li>在Java中用System.loadLibrary()方法加载第四步产生的动态链接库文件，这个native()方法就可以在Java中被访问了。<br>后续学习网址：<a href="https://www.ibm.com/developerworks/cn/java/jnimthds/" target="_blank" rel="noopener">IBM社区在 Windows 中实现 Java 本地方法</a></li>
 </ul>
 
       
