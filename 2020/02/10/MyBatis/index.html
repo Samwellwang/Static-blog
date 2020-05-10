@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>海洋的个人BLOG</title>
+  <title>MyBatis | 海洋的个人BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SAMWELL,samwellwang">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海洋的个人BLOG">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="疫情期间为了充实自己（笑，学习一下SSM中的M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/MyBatis/index.html">
 <meta property="og:site_name" content="海洋的个人BLOG">
-<meta property="og:description" content="SAMWELL,samwellwang">
+<meta property="og:description" content="疫情期间为了充实自己（笑，学习一下SSM中的M">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-10T09:21:33.000Z">
+<meta property="article:modified_time" content="2020-05-10T15:46:17.707Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -156,16 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-MyBatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-MyBatis" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/MyBatis/">MyBatis</a>
+    <h1 class="article-title" itemprop="name">
+      MyBatis
     </h1>
   
 
@@ -179,9 +179,54 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>疫情期间为了充实自己（笑，学习一下SSM中的M</p>
-        
+<a id="more"></a>
+<h4 id="MyBatis-简介"><a href="#MyBatis-简介" class="headerlink" title="MyBatis 简介"></a>MyBatis 简介</h4><p>根据Github上开源的Repository的README上的说明：<br>The MyBatis SQL mapper framework makes it easier to use a relational database with object-oriented applications. MyBatis couples objects with stored procedures or SQL statements using a XML descriptor or annotations. Simplicity is the biggest advantage of the MyBatis data mapper over object relational mapping tools.<br>MyBatis SQL 是一个当编写面对对象应用时使用关系型数据库更简单的一个映射框架，MyBatis使用XML或者注释的方法结合对象和sql语句或存储过程，MyBatis相比于对象关系映射工具，简答是他最大优势所在。<br>So,很简单的说，MyBatis就是一个在程序中方便我们使用数据库的工具，应该是和我们公司目前在用的自己封装一个东西叫DE的差不多。都是一个对JDBC进行封装的ORM持久层框架，据了解还有另外一款叫Hebernate。他俩的区别主要是Mybatis用原生sql，而Hebernate是自己封装了一套语句，叫HQL。相比较我们公司的那玩意更像Hebernata，但是做得更垃圾，自定义查询语句也就算了，竟然连取余功能都没有，记得前一阵要写一个接口查询身份证号中的年龄以及性别和数据库实际存的不符的，这个判断性别可真把我难坏，我不要求一个’%’搞定，你起码搞个MOD()之类的吧，最后还得我用decode把0-9枚举了一遍，自定义奇（男）偶数（女）可还行。鉴于我们公司那玩意太。。。了，所以了解一下这个东东还是很好地。</p>
+<h4 id="初识Mybatis"><a href="#初识Mybatis" class="headerlink" title="初识Mybatis"></a>初识Mybatis</h4><p>学习一个新的框架当然要从搭建框架开始喽，暂时接触到的都是为了方便直接通过Maven往工程里添加一个依赖就行了，会自动加载jar包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;</span><br><span class="line">     &lt;version&gt;3.2.8&lt;&#x2F;version&gt;</span><br><span class="line"> &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Show-me-your-code！"><a href="#Show-me-your-code！" class="headerlink" title="Show me your code！"></a>Show me your code！</h4><p>接下来就是最令人兴奋的码码环节<br>首先需要编写一个简单的实体汽车POJO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.MyBatis;</span><br><span class="line"> </span><br><span class="line">public class Car &#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    public int getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line">        this.id &#x3D; id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后增加一个map的接口，通过注解将实体类和数据库对应起来 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package com.Mybatis.mapper;</span><br><span class="line">  </span><br><span class="line">import java.util.List;</span><br><span class="line"> </span><br><span class="line">import org.apache.ibatis.annotations.Delete;</span><br><span class="line">import org.apache.ibatis.annotations.Insert;</span><br><span class="line">import org.apache.ibatis.annotations.Select;</span><br><span class="line">import org.apache.ibatis.annotations.Update;</span><br><span class="line"> </span><br><span class="line">import com.how2java.Mybatis.Car;</span><br><span class="line">  </span><br><span class="line">public interface CarMapper &#123;</span><br><span class="line">  </span><br><span class="line">    @Insert(&quot; insert into car ( name ) values (#&#123;name&#125;) &quot;) </span><br><span class="line">    public int add(Car Car); </span><br><span class="line">        </span><br><span class="line">    @Delete(&quot; delete from car where id&#x3D; #&#123;id&#125; &quot;) </span><br><span class="line">    public void delete(int id); </span><br><span class="line">        </span><br><span class="line">    @Select(&quot;select * from car where id&#x3D; #&#123;id&#125; &quot;) </span><br><span class="line">    public Car get(int id); </span><br><span class="line">      </span><br><span class="line">    @Update(&quot;update car set name&#x3D;#&#123;name&#125; where id&#x3D;#&#123;id&#125; &quot;) </span><br><span class="line">    public int update(Car Car);  </span><br><span class="line">        </span><br><span class="line">    @Select(&quot; select * from car &quot;) </span><br><span class="line">    public List&lt;Car&gt; list(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加Mybatis的总配置文件 mybatis-config.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Config 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">&quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;typeAliases&gt;</span><br><span class="line">      &lt;package name&#x3D;&quot;com.Mybatis.pojo&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;typeAliases&gt;</span><br><span class="line">    &lt;environments default&#x3D;&quot;development&quot;&gt;</span><br><span class="line">        &lt;environment id&#x3D;&quot;development&quot;&gt;</span><br><span class="line">            &lt;transactionManager type&#x3D;&quot;JDBC&quot;&#x2F;&gt;</span><br><span class="line">            &lt;dataSource type&#x3D;&quot;POOLED&quot;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;driver&quot; value&#x3D;&quot;com.mysql.jdbc.Driver&quot;&#x2F;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;url&quot; value&#x3D;&quot;数据库地址&quot;&#x2F;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;用户名&quot;&#x2F;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;password&quot; value&#x3D;&quot;密码&quot;&#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;dataSource&gt;</span><br><span class="line">        &lt;&#x2F;environment&gt;</span><br><span class="line">    &lt;&#x2F;environments&gt;</span><br><span class="line">    &lt;mappers&gt;</span><br><span class="line">        &lt;mapper resource&#x3D;&quot;com&#x2F;Mybatis&#x2F;pojo&#x2F;Car.xml&quot;&#x2F;&gt;</span><br><span class="line">        &lt;mapper class&#x3D;&quot;com.Mybatis.mapper.CarMapper&quot;&#x2F;&gt; </span><br><span class="line">    &lt;&#x2F;mappers&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>编写一个测试CURD的测试类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">package com.how2java;</span><br><span class="line">   </span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.util.List;</span><br><span class="line"> </span><br><span class="line">import org.apache.ibatis.io.Resources;</span><br><span class="line">import org.apache.ibatis.session.SqlSession;</span><br><span class="line">import org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line">import org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"> </span><br><span class="line">import com.Mybatis.mapper.CarMapper;</span><br><span class="line">import com.how2java.pojo.Car;</span><br><span class="line">   </span><br><span class="line">public class TestMybatis &#123;</span><br><span class="line">   </span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        String resource &#x3D; &quot;mybatis-config.xml&quot;;</span><br><span class="line">        InputStream inputStream &#x3D; Resources.getResourceAsStream(resource);</span><br><span class="line">        SqlSessionFactory sqlSessionFactory &#x3D; new SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">        SqlSession session &#x3D; sqlSessionFactory.openSession();</span><br><span class="line">        CarMapper mapper &#x3D; session.getMapper(CarMapper.class);</span><br><span class="line">  </span><br><span class="line">&#x2F;&#x2F;        add(mapper);</span><br><span class="line">&#x2F;&#x2F;        delete(mapper);</span><br><span class="line">&#x2F;&#x2F;        get(mapper);</span><br><span class="line">&#x2F;&#x2F;        update(mapper);</span><br><span class="line">        listAll(mapper);</span><br><span class="line">              </span><br><span class="line">        session.commit();</span><br><span class="line">        session.close();</span><br><span class="line">   </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    private static void update(CarMapper mapper) &#123;</span><br><span class="line">        Car c&#x3D; mapper.get(8);</span><br><span class="line">        c.setName(&quot;修改了的Car名稱&quot;);</span><br><span class="line">        mapper.update(c);</span><br><span class="line">        listAll(mapper);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    private static void get(CarMapper mapper) &#123;</span><br><span class="line">        Car c&#x3D; mapper.get(8);</span><br><span class="line">        System.out.println(c.getName());</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    private static void delete(CarMapper mapper) &#123;</span><br><span class="line">        mapper.delete(2);</span><br><span class="line">        listAll(mapper);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    private static void add(CarMapper mapper) &#123;</span><br><span class="line">        Car c &#x3D; new Car();</span><br><span class="line">        c.setName(&quot;新增加的Car&quot;);</span><br><span class="line">        mapper.add(c);</span><br><span class="line">        listAll(mapper);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    private static void listAll(CarMapper mapper) &#123;</span><br><span class="line">        List&lt;Car&gt; cs &#x3D; mapper.list();</span><br><span class="line">        for (Car c : cs) &#123;</span><br><span class="line">            System.out.println(c.getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>得，基础的CURD就大工告成了，其实不使用注解也可用xml的配置文件来做数据库和实体对象的中间层，太麻烦了。我估计正式开发也没人用那个吧，都是用注解应该，明天问问其他的朋友们。</p>
+<p>感谢<a href="www.how2j.com">how2j站长</a></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢，但没必要~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/thanks.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/thanks.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,16 +235,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/10/MyBatis/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/10/MyBatis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JSP常见问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -214,584 +318,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS常见问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">JSP常见问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-11-21T06:32:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文收集了在MVC开发过中的JSP开发遇到的一些常见问题</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#MyBatis-简介"><span class="toc-number">1.</span> <span class="toc-text">MyBatis 简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初识Mybatis"><span class="toc-number">2.</span> <span class="toc-text">初识Mybatis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Show-me-your-code！"><span class="toc-number">3.</span> <span class="toc-text">Show me your code！</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-SQL的优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/08/SQL%E7%9A%84%E4%BC%98%E5%8C%96/">SQL的优化</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/08/SQL%E7%9A%84%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2019-10-08T05:24:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、为什么要对SQL进行优化"><a href="#一、为什么要对SQL进行优化" class="headerlink" title="一、为什么要对SQL进行优化"></a>一、为什么要对SQL进行优化</h3><p>我们开发项目上线初期，由于业务数据量相对较少，一些SQL的执行效率对程序运行效率的影响不太明显，而开发和运维人员也无法判断SQL对程序的运行效率有多大，故很少针对SQL进行专门的优化，而随着时间的积累，业务数据量的增多，SQL的执行效率对程序的运行效率的影响逐渐增大，此时对SQL的优化就很有必要。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/08/SQL%E7%9A%84%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL_Index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/01/MySQL_Index/">MySQL 索引的学习</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/01/MySQL_Index/" class="archive-article-date">
-  	<time datetime="2019-10-01T03:24:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  最近据传因中美关系紧张，公司买不到oracle的服务器。又因为新项目是基于sef2.0微服务开发的，租用阿里云的服务器，阿里云的服务器是mysql为主。学习一下mysql的相关知识。<br></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/01/MySQL_Index/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-折腾黑苹果的历程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/">黑苹果的折腾历程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2019-09-15T02:31:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从上个月中开始算起，弄这个黑苹果小一个月了，几乎所有的周末和晚上下班的时间都用在这个上了。不过皇天不负有心人，现在起码能用了，记录一下这个心酸的历程。  </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-深度好文推荐(技术相关)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90(%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3)/">技术相关好文推荐</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/16/%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90(%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3)/" class="archive-article-date">
-  	<time datetime="2019-05-16T01:22:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大部分都是从我的Chrome的收藏夹里翻出来的。做一个收藏，也是一个推荐。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/16/%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90(%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java 迭代器（Iterator和ListIterator）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/">Java 迭代器（Iterator和ListIterator）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-04-02T02:31:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天查资料的时候看到一个迭代器的东西，不晓得干嘛的。进而学习一下</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/02/Java%20%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88Iterator%E5%92%8CListIterator%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java面试问题与分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/16/Java%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E4%B8%8E%E5%88%86%E6%9E%90/">Java面试问题与分析</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/16/Java%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E4%B8%8E%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-03-16T00:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>想要系统和全面的学习一下Java，毕竟现在在学校也没有学到啥有用的，那就想说从面试题开始吧，反正不就之后也要找工作。LeetCode对我来说还是太难了，但以后也一定要开一篇博客来学习LeetCode的。现在就从简单的面试题开始（其实也不简单。随便在网上找了一个Java 最常见的 200+ 面试题来参考，查漏补缺，一道一道的攻克！</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/16/Java%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E4%B8%8E%E5%88%86%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MarkdownNote" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/21/MarkdownNote/">写markdown文章常用的格式</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/21/MarkdownNote/" class="archive-article-date">
-  	<time datetime="2019-02-21T02:32:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Markdown-note"><a href="#Markdown-note" class="headerlink" title="Markdown note"></a>Markdown note</h1><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/21/MarkdownNote/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-02-11T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -816,8 +368,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
