@@ -158,6 +158,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java方法是值传递还是引用传递" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/30/Java%E6%96%B9%E6%B3%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/">Java是值传递还是引用传递</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/30/Java%E6%96%B9%E6%B3%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" class="archive-article-date">
+  	<time datetime="2020-03-30T07:31:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####Java到底是™值传递还是引用传递<br>今天写代码的时候发现个有趣的事儿， 就是我传两个一个引用对象给一个转换函数。结果的我的函数没有生效！！刚开始以为没编译的问题，<br>clean之后还是不行。来来回回快一个小时了，真滴是气煞我也。难道说不是一直以为的地基本参数类型传值，引用类型传引用么？经过一番学习得知，果然是不要我以为的，<br>要Java规范以为的啊！<br>    废话不多说，先上结论：妥妥滴值传递！<br>基本类型就不多说了，传的是基本类型的副本，<br>但是注意对于引用类型，传的是引用地址的副本。<br>上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package com.dareway.demo;</span><br><span class="line"></span><br><span class="line">public class Person&#123;</span><br><span class="line">	public String name;</span><br><span class="line">	public int age;</span><br><span class="line">	Person()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	Person(String n ,int a)&#123;</span><br><span class="line">		this.name&#x3D;n;</span><br><span class="line">		this.age&#x3D;a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Test&#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Person one &#x3D; new Person(&quot;wang&quot;,22);</span><br><span class="line">		Person two &#x3D; new Person(&quot;yang&quot;,23);</span><br><span class="line">		switchEach(one,two);</span><br><span class="line">		System.out.println(&quot;one&#39;s name :&quot;+one.name);</span><br><span class="line">		System.out.println(&quot;two&#39;s name :&quot;+two.name);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p1&#39;s name :yang</span><br><span class="line">one&#39;s name :Jisoo</span><br><span class="line">two&#39;s name :yang</span><br></pre></td></tr></table></figure>
+<p>也就是说，传递的引用参数，可以改变内部的状态，但是不能指向一个新的地址。因为复制的只是应用地址的拷贝。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/30/Java%E6%96%B9%E6%B3%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MyBatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -696,69 +763,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/02/21/MarkdownNote/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-02-11T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
         </p>
       
 
