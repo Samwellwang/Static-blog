@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>海洋的个人BLOG</title>
+  <title>开发常见名词含义收集 | 海洋的个人BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SAMWELL,samwellwang">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海洋的个人BLOG">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="自从开始工作以来，每天都会遇到各种 ###token,session,cookie相关   一、我们先解释一下他的含义： 1、Token的引入：Token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，Token便应运而生。 2、Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发常见名词含义收集">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D%E5%90%AB%E4%B9%89%E6%94%B6%E9%9B%86/index.html">
 <meta property="og:site_name" content="海洋的个人BLOG">
-<meta property="og:description" content="SAMWELL,samwellwang">
+<meta property="og:description" content="自从开始工作以来，每天都会遇到各种 ###token,session,cookie相关   一、我们先解释一下他的含义： 1、Token的引入：Token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，Token便应运而生。 2、Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-08-04T10:23:45.000Z">
+<meta property="article:modified_time" content="2020-05-15T14:46:46.503Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -156,32 +158,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-MarkdownNote" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-开发常见名词含义收集" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/21/MarkdownNote/">写markdown文章常用的格式</a>
+    <h1 class="article-title" itemprop="name">
+      开发常见名词含义收集
     </h1>
   
 
         
-        <a href="/2019/02/21/MarkdownNote/" class="archive-article-date">
-  	<time datetime="2019-02-21T02:32:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
+        <a href="/2019/08/04/%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D%E5%90%AB%E4%B9%89%E6%94%B6%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2019-08-04T10:23:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Markdown-note"><a href="#Markdown-note" class="headerlink" title="Markdown note"></a>Markdown note</h1><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2>
-        
+        <p>自从开始工作以来，每天都会遇到各种</p>
+<p>###token,session,cookie相关<br>   一、我们先解释一下他的含义：</p>
+<p>1、Token的引入：Token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，Token便应运而生。</p>
+<p>2、Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
+<p>3、使用Token的目的：Token的目的是为了减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。</p>
+<pre><code>了解了Token的意义后，我们就更明确的知道为什么要用他了。
+
+二、如何使用Token？
+
+这是本文的重点，在这里我就介绍常用的两种方式。</code></pre><p>1、用设备号/设备mac地址作为Token（推荐）</p>
+<pre><code>客户端：客户端在登录的时候获取设备的设备号/mac地址，并将其作为参数传递到服务端。
+
+服务端：服务端接收到该参数后，便用一个变量来接收同时将其作为Token保存在数据库，并将该Token设置到session中，客户端每次请求的时候都要统一拦截，并将客户端传递的token和服务器端session中的token进行对比，如果相同则放行，不同则拒绝。</code></pre><p>分析：此刻客户端和服务器端就统一了一个唯一的标识Token，而且保证了每一个设备拥有了一个唯一的会话。该方法的缺点是客户端需要带设备号/mac地址作为参数传递，而且服务器端还需要保存；优点是客户端不需重新登录，只要登录一次以后一直可以使用，至于超时的问题是有服务器这边来处理，如何处理？若服务器的Token超时后，服务器只需将客户端传递的Token向数据库中查询，同时并赋值给变量Token，如此，Token的超时又重新计时。</p>
+<p>2、用session值作为Token</p>
+<pre><code>客户端：客户端只需携带用户名和密码登陆即可。
+
+客户端：客户端接收到用户名和密码后并判断，如果正确了就将本地获取sessionID作为Token返回给客户端，客户端以后只需带上请求数据即可。</code></pre><p>分析：这种方式使用的好处是方便，不用存储数据，但是缺点就是当session过期后，客户端必须重新登录才能进行访问数据。</p>
+<pre><code>三、使用过程中出现的问题以及解决方案？</code></pre><p>刚才我们轻松介绍了Token的两种使用方式，但是在使用过程中我们还出现各种问题，Token第一种方法中我们隐藏了一个在网络不好或者并发请求时会导致多次重复提交数据的问题。</p>
+<pre><code>该问题的解决方案：将session和Token套用，如此便可解决，如何套用呢？请看这段解释：</code></pre><p>session是一个在单个操作人员整个操作过程中，与服务器端保持通信的唯一识别信息，在同一操作人员的多次请求当中，session始终保证是同一对象，<br>而不是多个对象，因为可以对其加锁。当同一操作人员多个请求进入时，可以通过session限制只能单向通行。本文正是通过使用session以及在session<br>中加入token，来验证同一操作人员是否进行了并发重复的请求，在最后一个请求到来时，使用session中的token验证请求中的token是否一致，当不一致<br>时，被认为是重复提交，将不允许通过。<br>这就是解决重复提交的方案。</p>
+<p>   四、session和token和cookie<br>什么是session认证？<br>http协议是一无状态协议，所以如果用户向后台应用提供了用户名和密码来进行认证，下一次请求时，用户还是要带上用户名和密码进行用户认证。为了使后台应用能识别是哪个用户发出的请求，只能在后台服务器存储一份用户登陆信息，这份信息也会在响应前端请求时返回给浏览器（前端），前端将其保存为cookie，下次请求时前端发送给后端应用，后端应用就可以识别这个请求是来自哪个用户了，这就是传统的session认证</p>
+<p>session认证的过程是怎样的？<br>浏览器第一次访问服务器，服务器会创建一个session，然后同时为该session生成一个唯一的会话的key,也就是sessionid，然后，将sessionid及对应的session分别作为key和value保存到缓存中，也可以持久化到数据库中，然后服务器再把sessionid，以cookie的形式发送给客户端。这样浏览器下次再访问时，会直接带着cookie中的sessionid。然后服务器根据sessionid找到对应的session进行匹配；<br>还有一种是浏览器禁用了cookie或不支持cookie，这种可以通过URL重写的方式发到服务器；</p>
+<p>什么是token认证?<br>token的意思是“令牌”，是服务端生成的一串字符串，作为客户端进行请求的一个标识。<br>当用户第一次登录后，服务器生成一个token并将此token返回给客户端，以后客户端只需带上这个token前来请求数据即可，无需再次带上用户名和密码。</p>
+<p>token认证与session认证的区别？<br>token和session其实都是为了身份验证，session一般翻译为会话，而token更多的时候是翻译为令牌；<br>session服务器会保存一份，可能保存到缓存，文件，数据库；同样，session和token都是有过期时间一说，都需要去管理过期时间；<br>其实token与session的问题是一种时间与空间的博弈问题，session是空间换时间，而token是时间换空间。两者的选择要看具体情况而定。<br>虽然确实都是“客户端记录，每次访问携带”，但 token 很容易设计为自包含的，也就是说，后端不需要记录什么东西，每次一个无状态请求，每次解密验证，每次当场得出合法 /非法的结论。这一切判断依据，除了固化在 CS 两端的一些逻辑之外，整个信息是自包含的。这才是真正的无状态。<br>而 sessionid ，一般都是一段随机字符串，需要到后端去检索 id 的有效性。万一服务器重启导致内存里的 session 没了呢？万一 redis 服务器挂了呢？</p>
+<p>方案 A ：我发给你一张身份证，但只是一张写着身份证号码的纸片。你每次来办事，我去后台查一下你的 id 是不是有效。<br>方案 B ：我发给你一张加密的身份证，以后你只要出示这张卡片，我就知道你一定是自己人。<br>就这么个差别。<br>两种认证方式都是为了解决Http协议状态保持的问题，因为http协议是一种无状态协议。</p>
+<h3 id="Rest-服务"><a href="#Rest-服务" class="headerlink" title="Rest 服务"></a>Rest 服务</h3><p>rest应该具备以下条件：<br>使用客户/服务器模型(简称C/S结构，是一种网络架构，它把客户端 (Client) 与服务器(Server) 区分开来。 每一个客户端软件的实例都可以向一个服务器或应用程序服务器发出请求。)<br>例如前后端分离，页面和服务不在同一服务器上运行。</p>
+<p>层次化的系统<br>例如一个父系统下有多个子模块，每个模块都是独立的服务。</p>
+<p>无状态<br>服务端并不会保存有关客户的任何状态，也就是说要服务后端服务，就要带token过去。</p>
+<p>可缓存<br>例如服务端通过token缓存已登录过的用户信息，客户端请求会带一个token过来，后台服务通过带过来的token在缓存中取出用户信息，提高效率。</p>
+<p>统一的接口<br>例如，一个项目的所有模块都整合到一起，all-in-one，打成一个包，多个服务，整合到一个端口下。</p>
+<p>如果一个系统满足了上面所列出的五条约束，那么该系统就被称为是RESTful的(一种软件架构风格、设计风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。)</p>
+<h3 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h3><p>一、Eureka简介<br>　　Eureka是Netflix开发的<em>服务发现框架</em>，本身是一个基于REST的服务，主要用于定位运行在AWS域中的中间层服务，以达到负载均衡和中间层服务故障转移的目的。SpringCloud将它集成在其子项目spring-cloud-netflix中，以实现SpringCloud的服务发现功能。</p>
+<p>　　1、Eureka组件<br>　　Eureka包含两个组件：Eureka Server和Eureka Client。</p>
+<p>　　1.1 Eureka Server<br>　　Eureka Server提供服务注册服务，各个节点启动后，会在Eureka Server中进行注册，这样Eureka Server中的服务注册表中将会存储所有可用服务节点的信息，服务节点的信息可以在界面中直观的看到。<br>　　Eureka Server本身也是一个服务，默认情况下会自动注册到Eureka注册中心。<br>　　如果搭建单机版的Eureka Server注册中心，则需要配置取消Eureka Server的自动注册逻辑。毕竟当前服务注册到当前服务代表的注册中心中是一个说不通的逻辑。<br>　　Eureka Server通过Register、Get、Renew等接口提供服务的注册、发现和心跳检测等服务。</p>
+<p>　　2.1 Eureka Client<br>　　Eureka Client是一个java客户端，用于简化与Eureka Server的交互，客户端同时也具备一个内置的、使用轮询(round-robin)负载算法的负载均衡器。在应用启动后，将会向Eureka Server发送心跳,默认周期为30秒，如果Eureka Server在多个心跳周期内没有接收到某个节点的心跳，Eureka Server将会从服务注册表中把这个服务节点移除(默认90秒)。<br>　　Eureka Client分为两个角色，分别是：Application Service(Service Provider)和Application Client(Service Consumer)</p>
+<p>　　2.1.1 Application Service<br>　　服务提供方，是注册到Eureka Server中的服务。</p>
+<p>　　2.1.2 Application Client<br>　　服务消费方，通过Eureka Server发现服务，并消费。</p>
+<p>　　在这里，Application Service和Application Client不是绝对上的定义，因为Provider在提供服务的同时，也可以消费其他Provider提供的服务；Consumer在消费服务的同时，也可以提供对外服务。</p>
+<h3 id="SpringMVC-Spring-boot-Spring-Cloud"><a href="#SpringMVC-Spring-boot-Spring-Cloud" class="headerlink" title="SpringMVC Spring boot Spring Cloud"></a>SpringMVC Spring boot Spring Cloud</h3><p>spring boot只是一个配置工具,整合工具,辅助工具.</p>
+<p>springmvc是框架,项目中实际运行的代码</p>
+<p>Spring 框架就像一个家族，有众多衍生产品例如 boot、security、jpa等等。但他们的基础都是Spring 的ioc和 aop，ioc 提供了依赖注入的容器， aop解决了面向横切面的编程，然后在此两者的基础上实现了其他延伸产品的高级功能。</p>
+<p>Spring MVC提供了一种轻度耦合的方式来开发web应用。它是Spring的一个模块，是一个web框架。通过Dispatcher Servlet, ModelAndView 和 View Resolver，开发web应用变得很容易。解决的问题领域是网站应用程序或者服务开发——URL路由、Session、模板引擎、静态Web资源等等。</p>
+<p>Spring Boot实现了自动配置，降低了项目搭建的复杂度。它主要是为了解决使用Spring框架需要进行大量的配置太麻烦的问题，所以它并不是用来替代Spring的解决方案，而是和Spring框架紧密结合用于提升Spring开发者体验的工具。同时它集成了大量常用的第三方库配置(例如Jackson, JDBC, Mongo, Redis, Mail等等)，Spring Boot应用中这些第三方库几乎可以零配置的开箱即用(out-of-the-box)。</p>
+<p>Spring Boot只是承载者，辅助你简化项目搭建过程的。如果承载的是WEB项目，使用Spring MVC作为MVC框架，那么工作流程和你上面描述的是完全一样的，因为这部分工作是Spring MVC做的而不是Spring Boot。</p>
+<p>对使用者来说，换用Spring Boot以后，项目初始化方法变了，配置文件变了，另外就是不需要单独安装Tomcat这类容器服务器了，maven打出jar包直接跑起来就是个网站，但你最核心的业务逻辑实现与业务流程实现没有任何变化。</p>
+<p>总结：Spring 最初利用“工厂模式”（DI）和“代理模式”（AOP）解耦应用组件。大家觉得挺好用，于是按照这种模式搞了一个 MVC框架（一些用Spring 解耦的组件），用开发 web 应用（ SpringMVC ）。然后发现每次开发都写很多样板代码，为了简化工作流程，于是开发出了一些“懒人整合包”（starter），这套就是 Spring Boot。</p>
+<p>所以，用最简练的语言概括就是：</p>
+<p>Spring 是一个“引擎”；</p>
+<p>Spring MVC 是基于Spring的一个 MVC 框架；</p>
+<p>Spring Boot 是基于Spring4的条件注册的一套快速开发整合包。<br>SpringCloud 是一套目前完整的微服务框架，它是是一系列框架的有序集合。它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过SpringBoot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用SpringBoot的开发风格做到一键启动和部署。</p>
+<p><a href="https://www.jianshu.com/p/24825a2683e6" target="_blank" rel="noopener">什么是token</a><br><a href="https://www.runoob.com/w3cnote/basic-knowledge-summary-of-spring.html" target="_blank" rel="noopener">Spring 基础知识详解</a><br><a href="https://www.cnblogs.com/jing99/p/11576133.html" target="_blank" rel="noopener">Eureka介绍</a></p>
+<p><a href="https://www.jianshu.com/p/8c7b92b4396c" target="_blank" rel="noopener">feign设计原理</a><br><a href="https://blog.csdn.net/weixin_42315600/article/details/84134094" target="_blank" rel="noopener">Spring boot和Spring Cloud</a><br><a href="https://mp.weixin.qq.com/s/8cNJy7fbI0CVbTCyrYoDeQ" target="_blank" rel="noopener">HTTP就是这么简单</a><br><a href="https://developer.51cto.com/art/201904/595020.htm" target="_blank" rel="noopener">消息队列介绍</a><br><a href="https://www.cnblogs.com/gonjan-blog/p/6685611.html" target="_blank" rel="noopener">动态代理详细分析</a></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢，但没必要~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/thanks.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/thanks.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,16 +271,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/21/MarkdownNote/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/04/%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D%E5%90%AB%E4%B9%89%E6%94%B6%E9%9B%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/09/15/%E6%8A%98%E8%85%BE%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%9A%84%E5%8E%86%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          黑苹果的折腾历程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/16/%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90(%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">技术相关好文推荐</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -214,206 +363,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-02-11T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇文章记录了学java以来的的全部笔记并不断进行更新,希望能坚持住吧~</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rest-服务"><span class="toc-number">1.</span> <span class="toc-text">Rest 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eureka"><span class="toc-number">2.</span> <span class="toc-text">Eureka</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringMVC-Spring-boot-Spring-Cloud"><span class="toc-number">3.</span> <span class="toc-text">SpringMVC Spring boot Spring Cloud</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-OpenCV" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/08/OpenCV/">OpenCV</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/08/OpenCV/" class="archive-article-date">
-  	<time datetime="2019-01-08T03:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库。OpenCV是由英特尔公司发起并参与开发，以BSD许可证授权发行，可以在商业和研究领域中免费使用。OpenCV可用于开发实时的图像处理、计算机视觉以及模式识别程序。该程序库也可以使用英特尔公司的IPP进行加速处理。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/08/OpenCV/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/21/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/21/hello-world/" class="archive-article-date">
-  	<time datetime="2018-12-21T08:53:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/21/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -438,8 +413,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
