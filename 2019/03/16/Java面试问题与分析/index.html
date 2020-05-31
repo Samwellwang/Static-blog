@@ -16,7 +16,7 @@
 <meta property="og:description" content="想要系统和全面的学习一下Java，毕竟现在在学校也没有学到啥有用的，那就想说从面试题开始吧，反正不就之后也要找工作。LeetCode对我来说还是太难了，但以后也一定要开一篇博客来学习LeetCode的。现在就从简单的面试题开始（其实也不简单。随便在网上找了一个Java 最常见的 200+ 面试题来参考，查漏补缺，一道一道的攻克！">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-03-16T00:27:53.000Z">
-<meta property="article:modified_time" content="2020-05-17T10:33:41.369Z">
+<meta property="article:modified_time" content="2020-05-31T15:40:58.571Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -502,13 +502,24 @@ True True True False False</code></pre><h4 id="3-两个对象的-hashCode-相同
 <h4 id="说一下-mysql-的行锁和表锁？"><a href="#说一下-mysql-的行锁和表锁？" class="headerlink" title="说一下 mysql 的行锁和表锁？"></a>说一下 mysql 的行锁和表锁？</h4><p>表锁一般是Myisam使用的，开销小，加锁快，无死锁，并发度低<br>行锁一般是InnoDB，开销大，加锁慢，会出现死锁，并发度高<br>只有通过索引条件检索数据，InnoDB才会使用行级锁，否则，InnoDB将使用表锁！</p>
 <h4 id="说一下乐观锁和悲观锁？"><a href="#说一下乐观锁和悲观锁？" class="headerlink" title="说一下乐观锁和悲观锁？"></a>说一下乐观锁和悲观锁？</h4><p>乐观锁：version来记录数据表中记录的版本<br>悲观锁：排它锁和共享锁</p>
 <h4 id="mysql-问题排查都有哪些手段？"><a href="#mysql-问题排查都有哪些手段？" class="headerlink" title="mysql 问题排查都有哪些手段？"></a>mysql 问题排查都有哪些手段？</h4><h4 id="如何做-mysql-的性能优化？"><a href="#如何做-mysql-的性能优化？" class="headerlink" title="如何做 mysql 的性能优化？"></a>如何做 mysql 的性能优化？</h4><p>简历索引的方法对不对。查看性能</p>
-<h3 id="十八、Redis"><a href="#十八、Redis" class="headerlink" title="十八、Redis"></a>十八、Redis</h3><h3 id="十九、JVM"><a href="#十九、JVM" class="headerlink" title="十九、JVM"></a>十九、JVM</h3><h4 id="说一下-jvm-的主要组成部分？及其作用？"><a href="#说一下-jvm-的主要组成部分？及其作用？" class="headerlink" title="说一下 jvm 的主要组成部分？及其作用？"></a>说一下 jvm 的主要组成部分？及其作用？</h4><h4 id="说一下-jvm-运行时数据区？"><a href="#说一下-jvm-运行时数据区？" class="headerlink" title="说一下 jvm 运行时数据区？"></a>说一下 jvm 运行时数据区？</h4><h4 id="说一下堆栈的区别？"><a href="#说一下堆栈的区别？" class="headerlink" title="说一下堆栈的区别？"></a>说一下堆栈的区别？</h4><p>栈放基本变量和引用，堆放对象</p>
+<h3 id="十八、Redis"><a href="#十八、Redis" class="headerlink" title="十八、Redis"></a>十八、Redis</h3><h3 id="十九、JVM"><a href="#十九、JVM" class="headerlink" title="十九、JVM"></a>十九、JVM</h3><h4 id="说一下-jvm-的主要组成部分？及其作用？"><a href="#说一下-jvm-的主要组成部分？及其作用？" class="headerlink" title="说一下 jvm 的主要组成部分？及其作用？"></a>说一下 jvm 的主要组成部分？及其作用？</h4><p>类加载器，执行引擎，本地接口，运行时数据区</p>
+<h4 id="说一下-jvm-运行时数据区？"><a href="#说一下-jvm-运行时数据区？" class="headerlink" title="说一下 jvm 运行时数据区？"></a>说一下 jvm 运行时数据区？</h4><p>堆内存和栈内存，1.8之前有方法区，栈还分为本地方法栈和虚拟机栈。程序计数器。</p>
+<h4 id="说一下堆栈的区别？"><a href="#说一下堆栈的区别？" class="headerlink" title="说一下堆栈的区别？"></a>说一下堆栈的区别？</h4><p>栈放基本变量和引用分为各个栈帧，，堆放所有的实例化的对象，以数据的角度，分为对象头，实例数据和对象填充。<br>以GC的角度分为新生代和老年代。堆是所有线程共有，一个jvm实例进程一个。栈是每个线程都有一个。</p>
 <h4 id="队列和栈是什么？有什么区别？"><a href="#队列和栈是什么？有什么区别？" class="headerlink" title="队列和栈是什么？有什么区别？"></a>队列和栈是什么？有什么区别？</h4><p>queue和stack  吃多了拉就是queue，吃多了吐就是栈，java中用deque来模仿stack</p>
 <h4 id="什么是双亲委派模型？"><a href="#什么是双亲委派模型？" class="headerlink" title="什么是双亲委派模型？"></a>什么是双亲委派模型？</h4><p>类加载器,把类加载到虚拟机的方法区的，而加载的规则就叫双亲委派机制（应用类加载器-&gt;扩展类加载器-&gt;启动类加载器，有的还有自定义类加载器。）<br>从上到下：<br>BootStarpClassloader：主要负责加载核心的类库(java.lang.*等)，构造ExtClassLoader和APPClassLoader。<br>ExtClassLoader：主要负责加载jre/lib/ext目录下的一些扩展的jar。<br>AppClassLoader：主要负责加载应用程序的主函数类<br>这种设计有个好处是，如果有人想替换系统级别的类：String.java。篡改它的实现，但是在这种机制下这些系统的类已经被Bootstrap classLoader加载过了，所以并不会再去加载，从一定程度上防止了危险代码的植入。</p>
 <h4 id="说一下类加载的执行过程？"><a href="#说一下类加载的执行过程？" class="headerlink" title="说一下类加载的执行过程？"></a>说一下类加载的执行过程？</h4><p>开一篇博客单独学习吧</p>
-<h4 id="怎么判断对象是否可以被回收？"><a href="#怎么判断对象是否可以被回收？" class="headerlink" title="怎么判断对象是否可以被回收？"></a>怎么判断对象是否可以被回收？</h4><p>是否继承与root，不继承的统统GC</p>
+<h4 id="怎么判断对象是否可以被回收？"><a href="#怎么判断对象是否可以被回收？" class="headerlink" title="怎么判断对象是否可以被回收？"></a>怎么判断对象是否可以被回收？</h4><p>是否继承与root，不继承的统统GC，两种方法，一种是引用计数法，一种是可达性分析算法。</p>
 <h4 id="java-中都有哪些引用类型？"><a href="#java-中都有哪些引用类型？" class="headerlink" title="java 中都有哪些引用类型？"></a>java 中都有哪些引用类型？</h4><p>强软弱虚&amp;&amp;队列<a href="https://www.cnblogs.com/liyutian/p/9690974.html" target="_blank" rel="noopener">kanyixia</a></p>
-<h4 id="说一下-jvm-有哪些垃圾回收算法？"><a href="#说一下-jvm-有哪些垃圾回收算法？" class="headerlink" title="说一下 jvm 有哪些垃圾回收算法？"></a>说一下 jvm 有哪些垃圾回收算法？</h4><h4 id="说一下-jvm-有哪些垃圾回收器？"><a href="#说一下-jvm-有哪些垃圾回收器？" class="headerlink" title="说一下 jvm 有哪些垃圾回收器？"></a>说一下 jvm 有哪些垃圾回收器？</h4><h4 id="详细介绍一下-CMS-垃圾回收器？"><a href="#详细介绍一下-CMS-垃圾回收器？" class="headerlink" title="详细介绍一下 CMS 垃圾回收器？"></a>详细介绍一下 CMS 垃圾回收器？</h4><h4 id="新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"><a href="#新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？" class="headerlink" title="新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"></a>新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？</h4><h4 id="简述分代垃圾回收器是怎么工作的？"><a href="#简述分代垃圾回收器是怎么工作的？" class="headerlink" title="简述分代垃圾回收器是怎么工作的？"></a>简述分代垃圾回收器是怎么工作的？</h4><h4 id="说一下-jvm-调优的工具？"><a href="#说一下-jvm-调优的工具？" class="headerlink" title="说一下 jvm 调优的工具？"></a>说一下 jvm 调优的工具？</h4><h4 id="常用的-jvm-调优的参数都有哪些？"><a href="#常用的-jvm-调优的参数都有哪些？" class="headerlink" title="常用的 jvm 调优的参数都有哪些？"></a>常用的 jvm 调优的参数都有哪些？</h4>
+<h4 id="说一下-jvm-有哪些垃圾回收算法？"><a href="#说一下-jvm-有哪些垃圾回收算法？" class="headerlink" title="说一下 jvm 有哪些垃圾回收算法？"></a>说一下 jvm 有哪些垃圾回收算法？</h4><p>ms(标记清除法)，mc(标记压缩法)、复制法</p>
+<h4 id="说一下-jvm-有哪些垃圾回收器？"><a href="#说一下-jvm-有哪些垃圾回收器？" class="headerlink" title="说一下 jvm 有哪些垃圾回收器？"></a>说一下 jvm 有哪些垃圾回收器？</h4><ul>
+<li>Serial收集器（复制算法)：新生代单线程收集器，标记和清理都是单线程，优点是简单高效。是client级别默认的GC方式，可以通过-XX:+UseSerialGC来强制指定。</li>
+<li>Serial Old收集器(标记-整理算法)：老年代单线程收集器，Serial收集器的老年代版本。</li>
+<li>ParNew收集器(停止-复制算法)　：新生代收集器，可以认为是Serial收集器的多线程版本,在多核CPU环境下有着比Serial更好的表现。</li>
+<li>Parallel Scavenge收集器(停止-复制算法)：并行收集器，追求高吞吐量，高效利用CPU。吞吐量一般为99%， 吞吐量= 用户线程时间/(用户线程时间+GC线程时间)。适合后台应用等对交互相应要求不高的场景。是server级别默认采用的GC方式，可用-XX:+UseParallelGC来强制指定，用-XX:ParallelGCThreads=4来指定线程数。</li>
+<li>Parallel Old收集器(停止-复制算法)：Parallel Scavenge收集器的老年代版本，并行收集器，吞吐量优先。</li>
+<li>CMS(Concurrent Mark Sweep)收集器（标记-清理算法）：高并发、低停顿，追求最短GC回收停顿时间，cpu占用比较高，响应时间快，停顿时间短，多核cpu 追求高响应时间的选择。<h4 id="详细介绍一下-CMS-垃圾回收器？"><a href="#详细介绍一下-CMS-垃圾回收器？" class="headerlink" title="详细介绍一下 CMS 垃圾回收器？"></a>详细介绍一下 CMS 垃圾回收器？</h4><a href="https://www.cnblogs.com/aspirant/p/8663911.html" target="_blank" rel="noopener">Here</a><h4 id="新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"><a href="#新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？" class="headerlink" title="新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"></a>新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？</h4>新生代回收器：Serial、ParNew、Parallel Scavenge<br>老年代回收器：Serial Old、Parallel Old、CMS<br>整堆回收器：G1<br>新生代垃圾回收器一般采用的是复制算法，复制算法的优点是效率高，缺点是内存利用率低；老年代回收器一般采用的是标记-整理的算法进行垃圾回收。<h4 id="简述分代垃圾回收器是怎么工作的？"><a href="#简述分代垃圾回收器是怎么工作的？" class="headerlink" title="简述分代垃圾回收器是怎么工作的？"></a>简述分代垃圾回收器是怎么工作的？</h4>分代回收器有两个分区：老生代和新生代，新生代默认的空间占比总空间的 1/3，老生代的默认占比是 2/3。 新生代使用的是复制算法，新生代里有 3 个分区：Eden、To Survivor、From Survivor，它们的默认占比是 8:1:1，<br>它的执行流程如下：<br>把 Eden + From Survivor 存活的对象放入 To Survivor 区；<br>清空 Eden 和 From Survivor 分区； From Survivor 和 To Survivor 分区交换，From Survivor 变 To Survivor，To Survivor 变 From Survivor。<br>每次在 From Survivor 到 To Survivor 移动时都存活的对象，年龄就 +1，当年龄到达 15（默认配置是 15）时，升级为老生代。大对象也会直接进入老生代。<br>老生代当空间占用到达某个值之后就会触发全局垃圾收回，一般使用标记整理的执行算法。<br>以上这些循环往复就构成了整个分代垃圾回收的整体执行流程。<h4 id="说一下-jvm-调优的工具？"><a href="#说一下-jvm-调优的工具？" class="headerlink" title="说一下 jvm 调优的工具？"></a>说一下 jvm 调优的工具？</h4>jconsole<br>VisualVM<h4 id="常用的-jvm-调优的参数都有哪些？"><a href="#常用的-jvm-调优的参数都有哪些？" class="headerlink" title="常用的 jvm 调优的参数都有哪些？"></a>常用的 jvm 调优的参数都有哪些？</h4><a href="https://cloud.tencent.com/developer/article/1198524" target="_blank" rel="noopener">这个比较全</a></li>
+</ul>
+
       
 
       
