@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14923529-c0cbbccaa6858ca1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/952935/201707/952935-20170719161150740-1984455628.jpg">
 <meta property="article:published_time" content="2020-05-01T01:33:01.000Z">
-<meta property="article:modified_time" content="2020-05-31T03:19:37.257Z">
+<meta property="article:modified_time" content="2020-06-02T15:23:55.863Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14923529-b96312d95eb09d15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -282,6 +282,12 @@
 </li>
 </ul>
 <h4 id="GC的实现–垃圾回收器"><a href="#GC的实现–垃圾回收器" class="headerlink" title="GC的实现–垃圾回收器"></a>GC的实现–垃圾回收器</h4><p><a href="https://www.sczyh30.com/posts/Java/jvm-gc-hotspot-implements/" target="_blank" rel="noopener">垃圾收集器</a></p>
+<ul>
+<li>新生代收集器：Serial、ParNew、Parallel Scavenage</li>
+<li>老年代收集器：Serial old、Parallel Old、CMS</li>
+<li>整堆回收：G1<br>首先介绍JVM的模式有两种 Server （重量）和 Client（轻量）</li>
+</ul>
+<p>Serial：单线程，简单高效。Stop the World。使用Client模式的JVM<br>ParNew：Serial的多线程版本，使用Server模式。并行多线程<br>Parallel Scavenage：与吞吐量关系密切，故也称为吞吐量优先收集器。该收集器的目标是达到一个可控制的吞吐量。并行多线程。<br>Serial Old ：Serial 老年代版本，M-C垃圾回收算法。<br>Parallel Old ：Parallel Scavenage老年代版本。多线程，采用M-C垃圾回收算法。注重高吞吐量以及CPU资源敏感的场合使用。<br>CMS收集器：Concurrent-Marked-Sweep，一种以获取最短回收停顿时间为目标的收集器。 CMS收集器的内存回收过程是与用户线程一起并发执行的。是 HotSpot 虚拟机第一款真正意义上的并发收集器，它第一次实现了让垃圾收集线程与用户线程（基本上）同时工作。<br>G1收集器：Garbage-First是一款面向服务端应用的垃圾收集器。详情请参阅<a href="https://www.cnblogs.com/chenpt/p/9803298.html" target="_blank" rel="noopener">Jvm垃圾回收器（终结篇）</a>  </p>
 
       
 
