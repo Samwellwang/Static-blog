@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>海洋的个人BLOG</title>
+  <title>面试遇到的算法题 | 海洋的个人BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SAMWELL,samwellwang">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海洋的个人BLOG">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="今天面试遇到了两道根本算不上算法题的算法题我都没有写出来，我特么都不好意思说出来。这块的基础太过于薄弱了。开一篇blog记录一下学习会的算法题，之前学了几道LeetCode。当时觉得自己学会了，但是现在也都忘记了。什么动态规划之类的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试遇到的算法题">
+<meta property="og:url" content="http://yoursite.com/2020/06/15/%E7%AE%97%E6%B3%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="海洋的个人BLOG">
-<meta property="og:description" content="SAMWELL,samwellwang">
+<meta property="og:description" content="今天面试遇到了两道根本算不上算法题的算法题我都没有写出来，我特么都不好意思说出来。这块的基础太过于薄弱了。开一篇blog记录一下学习会的算法题，之前学了几道LeetCode。当时觉得自己学会了，但是现在也都忘记了。什么动态规划之类的。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-15T12:19:23.000Z">
+<meta property="article:modified_time" content="2020-06-15T23:52:19.408Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -156,16 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-算法题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/15/%E7%AE%97%E6%B3%95%E9%A2%98/">面试遇到的算法题</a>
+    <h1 class="article-title" itemprop="name">
+      面试遇到的算法题
     </h1>
   
 
@@ -179,9 +179,69 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天面试遇到了两道根本算不上算法题的算法题我都没有写出来，我特么都不好意思说出来。这块的基础太过于薄弱了。开一篇blog记录一下学习会的算法题，之前学了几道LeetCode。当时觉得自己学会了，但是现在也都忘记了。什么动态规划之类的。 </p>
-        
+<a id="more"></a>
+<h5 id="删除数组的指定元素"><a href="#删除数组的指定元素" class="headerlink" title="删除数组的指定元素"></a>删除数组的指定元素</h5><p>这我竟然都没写出来<br>{1,2,3,4} 删除4  </p>
+<pre><code>public class DeleArrayValue{
+    public static void main(String[] args){
+        Integer[] arr = {1,2,3,4};
+        arr=deleValue(arr,3);
+        System.out.print(arr.toString);
+    }
+    public static Integer[] deleValue(Integer[] array,Integer value){
+        int i=0
+        for(; i&lt;array.length;i++){
+            if(array[i]==value) break;
+        }
+        if(i+1&lt;array.length){
+            System.arraycopy(array,i+1,array,i,array.length-i-1);
+        }
+        array[array.length-1]=null;
+        return array;
+    }
+}</code></pre><h4 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h4><p>1&gt;2&gt;3&gt;4变为 4&gt;3&gt;2&gt;1  </p>
+<pre><code>public Node reverse(Node head){
+    if(head==null||head.next==null){
+        return head;
+    }
+    Node temp= head.next;
+    Node newHead = reversr(head.next);
+    temp.next=head;
+    head.next=null;
+    return newHead;
+}</code></pre>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢，但没必要~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/thanks.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/thanks.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,16 +250,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/15/%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/15/%E7%AE%97%E6%B3%95%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/09/%E6%B3%A8%E8%A7%A3%E7%9B%B8%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring 中注解相关</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -214,584 +333,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-注解相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/09/%E6%B3%A8%E8%A7%A3%E7%9B%B8%E5%85%B3/">Spring 中注解相关</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/09/%E6%B3%A8%E8%A7%A3%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2020-05-09T12:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实在我的日常生活中是基本没用过注解的。但是听别的同学讲他们公司用到的蛮多的，想学习一下。发现注解真的好牛掰哦。。可以完全抛弃xml的配置。。。希望我们公司也可以用注解来开发。。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/09/%E6%B3%A8%E8%A7%A3%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数组的指定元素"><span class="toc-number">1.</span> <span class="toc-text">删除数组的指定元素</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反转链表"><span class="toc-number"></span> <span class="toc-text">反转链表</span></a>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-JVM学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/JVM%E5%AD%A6%E4%B9%A0/">Battle With JVM</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/01/JVM%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-05-01T01:33:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>当你开始想系统性的学习Java的时候，JVM是不可能跳过的部分，哪个<del>国家我没去过</del>对象不是JVM创建的呢？之前的学习中遇到过很多JVM相关的内容，也只是了解，没有深入的学习。那这篇博客就记录一下学习JVM的过程。小部分内容是从网上摘录的。大部分都是查各种技术博客和《深入理解java虚拟机》然后经过我自己的理解叙述的。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/01/JVM%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-位运算和取余运算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%BD%8D%E8%BF%90%E7%AE%97%E5%92%8C%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/">关于Java源码中HashMap put函数中 【 p = tab[i = (n - 1) &amp; hash]】详解</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%BD%8D%E8%BF%90%E7%AE%97%E5%92%8C%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2020-04-20T14:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天看Java源码中关于put函数的取哈希表的索引的这个没看懂。深究一番终于了解了其中的原因了。记录一下</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%BD%8D%E8%BF%90%E7%AE%97%E5%92%8C%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-详解代理模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E8%AF%A6%E8%A7%A3%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">详解代理模式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E8%AF%A6%E8%A7%A3%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-04-10T12:20:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写代码的过程中看到许多Proxy的类，知道是代理模式，也知道代码如何走下去。但是对于代理模式的细节和原理却不太懂。<br>通过网上的学习得知<br>『<strong>代理模式是Java中常见的一种设计模式，根据创建代理类的时间点分为静态代理和动态代理。</strong>』</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E8%AF%A6%E8%A7%A3%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java方法是值传递还是引用传递" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/Java%E6%96%B9%E6%B3%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/">Java是值传递还是引用传递</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/30/Java%E6%96%B9%E6%B3%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" class="archive-article-date">
-  	<time datetime="2020-03-30T07:31:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Java到底是™值传递还是引用传递"><a href="#Java到底是™值传递还是引用传递" class="headerlink" title="Java到底是™值传递还是引用传递"></a>Java到底是™值传递还是引用传递</h4><p>今天写代码的时候发现个有趣的事儿， 就是我传两个一个引用对象给一个转换函数。结果的我的函数没有生效！！刚开始以为没编译的问题，<br>clean之后还是不行。来来回回快一个小时了，真滴是气煞我也。难道说不是一直以为的地基本参数类型传值，引用类型传引用么？经过一番学习得知，果然是不要我以为的，要Java规范以为的啊！</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/30/Java%E6%96%B9%E6%B3%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MyBatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/MyBatis/">MyBatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/10/MyBatis/" class="archive-article-date">
-  	<time datetime="2020-02-10T09:21:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>疫情期间为了充实自己（笑，学习一下SSM中的M</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/10/MyBatis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS常见问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">JSP常见问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-11-21T06:32:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文收集了在MVC开发过中的JSP开发遇到的一些常见问题</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/21/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SQL的优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/08/SQL%E7%9A%84%E4%BC%98%E5%8C%96/">SQL的优化</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/08/SQL%E7%9A%84%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2019-10-08T05:24:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、为什么要对SQL进行优化"><a href="#一、为什么要对SQL进行优化" class="headerlink" title="一、为什么要对SQL进行优化"></a>一、为什么要对SQL进行优化</h3><p>我们开发项目上线初期，由于业务数据量相对较少，一些SQL的执行效率对程序运行效率的影响不太明显，而开发和运维人员也无法判断SQL对程序的运行效率有多大，故很少针对SQL进行专门的优化，而随着时间的积累，业务数据量的增多，SQL的执行效率对程序的运行效率的影响逐渐增大，此时对SQL的优化就很有必要。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/08/SQL%E7%9A%84%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL_Index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/01/MySQL_Index/">MySQL 索引的学习</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/01/MySQL_Index/" class="archive-article-date">
-  	<time datetime="2019-10-01T03:24:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  最近据传因中美关系紧张，公司买不到oracle的服务器。又因为新项目是基于sef2.0微服务开发的，租用阿里云的服务器，阿里云的服务器是mysql为主。学习一下mysql的相关知识。<br></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/01/MySQL_Index/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -816,8 +383,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
