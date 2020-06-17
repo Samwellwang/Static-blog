@@ -16,7 +16,7 @@
 <meta property="og:description" content="今天面试遇到了两道根本算不上算法题的算法题我都没有写出来，我特么都不好意思说出来。这块的基础太过于薄弱了。开一篇blog记录一下学习会的算法题，之前学了几道LeetCode。当时觉得自己学会了，但是现在也都忘记了。什么动态规划之类的。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-15T12:19:23.000Z">
-<meta property="article:modified_time" content="2020-06-16T14:38:11.996Z">
+<meta property="article:modified_time" content="2020-06-17T01:02:31.097Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -224,7 +224,20 @@
        inorderTraversal(root.right);
        list.add(root.val);
        return list;
-} </code></pre>
+} </code></pre><h4 id="删除单链表的倒数第x个"><a href="#删除单链表的倒数第x个" class="headerlink" title="删除单链表的倒数第x个"></a>删除单链表的倒数第x个</h4><pre><code> public static Node deleValue(Node head ,int x){
+    Node fast = head;//快指针
+    Node slow = head;//慢指针
+    for(int j =0;j&lt;x-1;j++){//快指针先走的步数，画一下图就是知道是这个x-1.
+        fast=fast.next;
+    }
+    while(fast.next!=null){//当快指针走到头了，慢指针指向的就是要删除的
+        fast=fast.next;
+        slow=slow.next;
+    }
+    slow.val=slow.next.val;//把慢指针当前指向的下一个值给当前，
+    slow.next=slow.next.next;//然后把下一个指向的值给当前
+    return head; //返回头结点
+}</code></pre>
       
 
       
@@ -356,7 +369,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数组的指定元素"><span class="toc-number">1.</span> <span class="toc-text">删除数组的指定元素</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反转链表"><span class="toc-number"></span> <span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中序遍历"><span class="toc-number"></span> <span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前序遍历"><span class="toc-number"></span> <span class="toc-text">前序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后序遍历"><span class="toc-number"></span> <span class="toc-text">后序遍历</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数组的指定元素"><span class="toc-number">1.</span> <span class="toc-text">删除数组的指定元素</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反转链表"><span class="toc-number"></span> <span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中序遍历"><span class="toc-number"></span> <span class="toc-text">中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前序遍历"><span class="toc-number"></span> <span class="toc-text">前序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后序遍历"><span class="toc-number"></span> <span class="toc-text">后序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除单链表的倒数第x个"><span class="toc-number"></span> <span class="toc-text">删除单链表的倒数第x个</span></a>
                     </div>
                 </span>
             </div>
