@@ -16,7 +16,7 @@
 <meta property="og:description" content="今天面试遇到了两道根本算不上算法题的算法题我都没有写出来，我特么都不好意思说出来。这块的基础太过于薄弱了。开一篇blog记录一下学习会的算法题，之前学了几道LeetCode。当时觉得自己学会了，但是现在也都忘记了。什么动态规划之类的。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-15T12:19:23.000Z">
-<meta property="article:modified_time" content="2020-06-17T01:02:31.097Z">
+<meta property="article:modified_time" content="2020-06-17T01:57:28.798Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -206,21 +206,32 @@
 }</code></pre><p>就地反转法：</p>
 <p> emmmm</p>
 <h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><pre><code>    public List&lt;Integer&gt; inorderTraversal(TreeNode root) {
-        List&lt;Integer&gt; list= new ArrayList&lt;&gt;();
-        inorderTraversal(root.left);
+
+        List&lt;Integer&gt; list= new ArrayList&lt;&gt;();//刚测试这个应该放在外面
+        if(root.left!=null){
+            inorderTraversal(root.left);
+        }
+
         list.add(root.val);
-        inorderTraversal(root.right);
+        if(root.right!=null){
+           inorderTraversal(root.right);
+        }
+
        return list;
 }</code></pre><h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><pre><code>
      public List&lt;Integer&gt; preorderTraversal(TreeNode root) {
         List&lt;Integer&gt; list= new ArrayList&lt;&gt;();
         list.add(root.val);
+        if(root.left!=null)
         inorderTraversal(root.left);
+        if(root.right!=null)
         inorderTraversal(root.right);
        return list;
 }</code></pre><h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><pre><code>      public List&lt;Integer&gt; preorderTraversal(TreeNode root) {
         List&lt;Integer&gt; list= new ArrayList&lt;&gt;();
+        if(root.left!=null)
        inorderTraversal(root.left);
+       if(root.right!=null)
        inorderTraversal(root.right);
        list.add(root.val);
        return list;
