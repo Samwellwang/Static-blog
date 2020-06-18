@@ -16,7 +16,7 @@
 <meta property="og:description" content="自从开始工作以来，每天都会遇到各种技术名词，由于非计算机专业科班出身，很多词汇看的一头雾水。这就看一篇博客收集整理一下。久而久之就都会了">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-08-04T10:23:45.000Z">
-<meta property="article:modified_time" content="2020-05-17T03:01:27.768Z">
+<meta property="article:modified_time" content="2020-06-18T13:28:30.535Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -230,7 +230,9 @@
 <p>Spring MVC 是基于Spring的一个 MVC 框架；</p>
 <p>Spring Boot 是基于Spring4的条件注册的一套快速开发整合包。<br>SpringCloud 是一套目前完整的微服务框架，它是是一系列框架的有序集合。它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过SpringBoot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用SpringBoot的开发风格做到一键启动和部署。</p>
 <p><a href="https://www.jianshu.com/p/24825a2683e6" target="_blank" rel="noopener">什么是token</a><br><a href="https://www.runoob.com/w3cnote/basic-knowledge-summary-of-spring.html" target="_blank" rel="noopener">Spring 基础知识详解</a><br><a href="https://www.cnblogs.com/jing99/p/11576133.html" target="_blank" rel="noopener">Eureka介绍</a></p>
-<p><a href="https://www.jianshu.com/p/8c7b92b4396c" target="_blank" rel="noopener">feign设计原理</a><br><a href="https://blog.csdn.net/weixin_42315600/article/details/84134094" target="_blank" rel="noopener">Spring boot和Spring Cloud</a><br><a href="https://mp.weixin.qq.com/s/8cNJy7fbI0CVbTCyrYoDeQ" target="_blank" rel="noopener">HTTP就是这么简单</a><br><a href="https://developer.51cto.com/art/201904/595020.htm" target="_blank" rel="noopener">消息队列介绍</a><br><a href="https://www.cnblogs.com/gonjan-blog/p/6685611.html" target="_blank" rel="noopener">动态代理详细分析</a></p>
+<p><a href="https://www.jianshu.com/p/8c7b92b4396c" target="_blank" rel="noopener">feign设计原理</a><br><a href="https://blog.csdn.net/weixin_42315600/article/details/84134094" target="_blank" rel="noopener">Spring boot和Spring Cloud</a><br><a href="https://mp.weixin.qq.com/s/8cNJy7fbI0CVbTCyrYoDeQ" target="_blank" rel="noopener">HTTP就是这么简单</a><br><a href="https://developer.51cto.com/art/201904/595020.htm" target="_blank" rel="noopener">消息队列介绍</a><br><a href="https://www.cnblogs.com/gonjan-blog/p/6685611.html" target="_blank" rel="noopener">动态代理详细分析</a>  </p>
+<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p>cas是compare and swap的简称，从字面上理解就是比较并更新，简单来说：从某一内存上取值V，和预期值A进行比较，如果内存值V和预期值A的结果相等，那么我们就把新值B更新到内存，如果不相等，那么就重复上述操作直到成功为止。CAS就是一种乐观锁，而synchronized 就是悲观锁</p>
+<h3 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h3><p>题外话：我们现在要仔细的说一说I/O多路复用机制，因为这个说法实在是太通俗了，通俗到一般人都不懂是什么意思。博主打一个比方：小曲在S城开了一家快递店，负责同城快送服务。小曲因为资金限制，雇佣了一批快递员，然后小曲发现资金不够了，只够买一辆车送快递。<br>经营方式一<br>客户每送来一份快递，小曲就让一个快递员盯着，然后快递员开车去送快递。慢慢的小曲就发现了这种经营方式存在下述问题，几十个快递员基本上时间都花在了抢车上了，大部分快递员都处在闲置状态，谁抢到了车，谁就能去送快递随着快递的增多，快递员也越来越多，小曲发现快递店里越来越挤，没办法雇佣新的快递员了快递员之间的协调很花时间综合上述缺点，小曲痛定思痛，提出了下面的经营方式经营方式二<br>小曲只雇佣一个快递员。然后呢，客户送来的快递，小曲按送达地点标注好，然后依次放在一个地方。最后，那个快递员依次的去取快递，一次拿一个，然后开着车去送快递，送好了就回来拿下一个快递。<br>对比<br>上述两种经营方式对比，是不是明显觉得第二种，效率更高，更好呢。在上述比喻中:<br>每个快递员——————&gt;每个线程<br>每个快递——————–&gt;每个socket(I/O流)<br>快递的送达地点————–&gt;socket的不同状态<br>客户送快递请求————–&gt;来自客户端的请求<br>小曲的经营方式————–&gt;服务端运行的代码<br>一辆车———————-&gt;CPU的核数<br>于是我们有如下结论<br>1、经营方式一就是传统的并发模型，每个I/O流(快递)都有一个新的线程(快递员)管理。<br>2、经营方式二就是I/O多路复用。只有单个线程(一个快递员)，通过跟踪每个I/O流的状态(每个快递的送达地点)，来管理多个I/O流。</p>
 
       
 
@@ -372,7 +374,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#token-session-cookie相关"><span class="toc-number">1.</span> <span class="toc-text">token,session,cookie相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rest-服务"><span class="toc-number">2.</span> <span class="toc-text">Rest 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eureka"><span class="toc-number">3.</span> <span class="toc-text">Eureka</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringMVC-Spring-boot-Spring-Cloud"><span class="toc-number">4.</span> <span class="toc-text">SpringMVC Spring boot Spring Cloud</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#token-session-cookie相关"><span class="toc-number">1.</span> <span class="toc-text">token,session,cookie相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rest-服务"><span class="toc-number">2.</span> <span class="toc-text">Rest 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eureka"><span class="toc-number">3.</span> <span class="toc-text">Eureka</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringMVC-Spring-boot-Spring-Cloud"><span class="toc-number">4.</span> <span class="toc-text">SpringMVC Spring boot Spring Cloud</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS"><span class="toc-number">5.</span> <span class="toc-text">CAS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO多路复用"><span class="toc-number">6.</span> <span class="toc-text">IO多路复用</span></a></li></ol>
                     </div>
                 </span>
             </div>
