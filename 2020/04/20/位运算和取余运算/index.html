@@ -16,7 +16,7 @@
 <meta property="og:description" content="今天看Java源码中关于put函数的取哈希表的索引的这个没看懂。深究一番终于了解了其中的原因了。记录一下">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-20T14:26:57.000Z">
-<meta property="article:modified_time" content="2020-05-19T16:29:26.428Z">
+<meta property="article:modified_time" content="2020-09-04T02:13:47.105Z">
 <meta property="article:author" content="Samwellwang">
 <meta name="twitter:card" content="summary">
   
@@ -224,6 +224,9 @@
 </tbody></table>
 <p>左移对于二进制相当于*2，右移相当于/2 。<br>拿十进制举例：10左移变为100就是乘十。右移变为1 相当于除十；很有意思。Amazing<br>那么演过正传，还是谈论取余的，一个好好地取余运算咋就能变成与运算呢？<br>上面提到右移的运算，对于二进制来说，右移以为相当于除2，但是！重点来了。移出去的数就是除2的余数！神奇不！看一下例子：<br>101001&gt;&gt;1 = 10100 余 1 对应的就是 41%2 余 1 接着往上推<br>101001&gt;&gt;2 = 1010  余 01 对应的就是 41%4 余 1 继续<br>101001&gt;&gt;3 = 101   余 001 对应的就是 41%8 余 1 go on<br>101001&gt;&gt;4 = 10    余 1001 对应的就是 41%16 余 9   </p>
 <p>所以说对于 hash%x ,x为2^n时就等于hash的二进制的低n位数，<br>那么如何取到低n数呢？我们发现2^n 数总是为n+1位为1 后面都为0的数，比如<br>10就是2，100就是4,1000就是8,10000就是16，<br>那么相应的2^n-1就是n+1位为0其余为1的数，比如：<br>01就是1,011就是3,0111就是7,01111就是15。当这个数与hash做 与&amp; 运算的时候正好保留了hash的低n位数，就是这么的Amazing。<br>所以<strong>hash%n=hash&amp;(n-1)</strong>当2为2的次幂时。那么这么做有什么好处么？就是可以大大提高效率，位运算(&amp;)效率要比代替取模运算(%)高很多，主要原因是位运算直接对内存数据进行操作，不需要转成十进制，因此处理速度非常快。 对于HashMap里的取哈希表的索引来说是经常要执行的部分。这样就大大节省了开销</p>
+<p>引用一句大佬的话,形容的真的很透彻：<br>如果数组长度是2的整数次方时，也就是一个偶数，length-1就是一个奇数，奇数的二进制最后一位是1，因此不管hash(key)是多少，hash(key)&amp;(length-1)的二进制最后一位可能是0，也可能是1，取决于hash(key)。即如果hash(key)是奇数的话，则映射到数组上第奇数个位置上。</p>
+<p>如果length是一个奇数的话，length-1就是一个偶数，偶数的二进制最后一位是0，则不管hash(key)是奇数还是偶数，该元素都会被映射到数组上第偶数个位置上，奇数位置上没有任何元素！</p>
+<p>因此，数组长度是一个2的整数次方时，哈希碰撞的概率起码能下降一半，而且所有元素也能均匀地分布在数组上。</p>
 <p>注：求余运算：a % b就相当与a - (a / b) * b 的运算<br>为了弄清这块儿真的是找了很多资料。不得不说百度真的太辣鸡了。公司还不能上谷歌和StackOverFlow。影响查资料的效率。<br>但是下面这个文章就是点醒我的trigger。<br><a href="https://www.cnblogs.com/itplay/p/10030292.html" target="_blank" rel="noopener">位与运算与取余</a></p>
 
       
